@@ -1,8 +1,8 @@
 import java.util.List;
 
 public class Predicate {
-   String name;
-   List<String> variables;
+   public String name;
+   public List<String> variables;
 
    public Predicate(String name, List<String> variables) {
       this.name = name;
