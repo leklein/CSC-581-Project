@@ -10,7 +10,7 @@ public class Predicate {
    }
 
    public boolean equals(Object other) {
-      if (other == null || !other.getClass().equals(getClass())) {
+      if (other == null || !(other instanceof Predicate)) {
          return false;
       }
       Predicate o = (Predicate)other;
