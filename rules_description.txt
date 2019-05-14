@@ -1,0 +1,18 @@
+(1)	!AnswerPerson(A) & ... & !AnswerPerson(E) -> AnswerPerson(F)
+	
+	If n-1 of the people are eliminated, the nth must be the answer.
+	
+(2)	Same as (1) but with weapons
+
+(3)	Same as (1) but with rooms
+
+(4)	(Shown(player,ME,card) & Person(card)) ->
+		(!AnswerPerson(card) & HasCard(player,card))
+
+	If a card is shown to ME, and the card is a person, two things are true:
+		(a)	The person on the card is not the answer
+		(b) The player who showed the card has the card
+
+(5)	Same as (4) but with weapons
+
+(6) Same as (4) but with rooms
