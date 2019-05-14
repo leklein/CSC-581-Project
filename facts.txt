@@ -1,0 +1,21 @@
+Weapon|Candlestick
+Weapon|Knife
+Weapon|Lead Pipe
+Weapon|Revolver
+Weapon|Rope
+Weapon|Wrench
+Room|Ballroom
+Room|Billiard Room
+Room|Conservatory
+Room|Dining Room
+Room|Hall
+Room|Kitchen
+Room|Library
+Room|Lounge
+Room|Study
+Person|Mr. Green
+Person|Colonel Mustard
+Person|Mrs. Peacock
+Person|Professor Plum
+Person|Miss Scarlett
+Person|Mrs. White
