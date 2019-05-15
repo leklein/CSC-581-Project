@@ -7,12 +7,13 @@
 (3)	Same as (1) but with rooms
 
 (4)	(Shown(player,ME,card) & Person(card)) ->
-		(!AnswerPerson(card) & HasCard(player,card))
+		(!AnswerPerson(card))
 
-	If a card is shown to ME, and the card is a person, two things are true:
-		(a)	The person on the card is not the answer
-		(b) The player who showed the card has the card
+	If a card is shown to ME, and the card is a person, then the person on the card is not the answer
 
 (5)	Same as (4) but with weapons
 
-(6) Same as (4) but with rooms
+(6)     Same as (4) but with rooms
+(7)     (Shown(player,ME,card) -> Has(player,card))
+
+        If a card is shown to ME by player, then player has that card
