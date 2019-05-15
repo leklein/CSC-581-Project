@@ -9,14 +9,11 @@ public class RuleParser {
     
     public List<Predicate> readRules(String fileName) {
         Scanner scanner = new Scanner(fileName);
-        Scanner tokenizer;
         List<Predicate> preds = new LinkedList<Predicate>();
 
-        String line, token;
-        String[] lineData;
+        String line;
         while (scanner.hasNextLine()) {
             line = scanner.nextLine();
-            tokenizer = new Scanner(line);
 
             String pred = "";
             String[] predArgs = {};
@@ -47,12 +44,13 @@ public class RuleParser {
                     andConnected = false;
                 }
 
-                Predicate newPred = new Predicate(pred, Arrays.asList(predArgs));
-
                 // TODO add all predicates to list? or is '|' end of a rule?
+                preds.add(new Predicate(pred, Arrays.asList(predArgs)));
             }
         }
 
-        return null;
+        scanner.close();
+
+        return preds;
     }
 }
