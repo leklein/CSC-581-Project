@@ -1,21 +1,22 @@
-Person|mr. green
-Person|colonel mustard
-Person|mrs. peacock
-Person|professor plum
-Person|miss scarlett
-Person|mrs. white
-Weapon|candlestick
-Weapon|knife
-Weapon|lead pipe
-Weapon|revolver
-Weapon|rope
-Weapon|wrench
-Room|ballroom
-Room|billiard room
-Room|conservatory
-Room|dining room
-Room|hall
-Room|kitchen
-Room|library
-Room|lounge
-Room|study
+Person|_mr_green
+Person|_colonel_mustard
+Person|_mrs_peacock
+Person|_professor_plum
+Person|_miss_scarlett
+Person|_mrs_white
+Weapon|_candlestick
+Weapon|_knife
+Weapon|_lead_pipe
+Weapon|_revolver
+Weapon|_rope
+Weapon|_wrench
+Room|_ballroom
+Room|_billiard room
+Room|_conservatory
+Room|_dining room
+Room|_hall
+Room|_kitchen
+Room|_library
+Room|_lounge
+Room|_study
+Player|_me
