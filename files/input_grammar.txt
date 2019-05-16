@@ -1,0 +1,9 @@
+    Files -> File Files | File
+     File -> S
+        S -> Rule "\n" S | Rule
+     Rule -> Predicate "|" Rule | Predicate
+Predicate -> __name__ ":" Variables
+Variables -> Variable "," Variables | Variable
+ Variable -> __variable__
+
+(note: __name__, __variable__ denote a string representing the predicate name and variable names, respectively)
