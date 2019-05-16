@@ -1,6 +1,8 @@
 AnswerPerson:mr. green | AnswerPerson:colonel mustard | AnswerPerson:mrs. peacock | AnswerPerson:professor plum | AnswerPerson:miss scarlett | AnswerPerson:mrs. white
 AnswerWeapon:candlestick | AnswerWeapon:knife | AnswerWeapon:lead pipe | AnswerWeapon:revolver | AnswerWeapon:wrench
 AnswerRoom:ballroom | AnswerRoom:billiard room | AnswerRoom:conservatory | AnswerRoom:dining room | AnswerRoom:hall | AnswerRoom:kitchen | AnswerRoom:library | AnswerRoom:lounge | AnswerRoom:study
-!AnswerPerson:card | !Person:card | !Shown:player,ME,card & HasCard:player,card | !Person:card | !Shown:player,ME,card
-!AnswerWeapon:card | !Weapon:card | !Shown:player,ME,card & HasCard:player,card | !Weapon:card | !Shown:player,ME,card
-!AnswerRoom:card | !Room:card | !Shown:player,ME,card & HasCard:player,card | !Room:card | !Shown:player,ME,card
+!Shown:player,ME,card | !Person:card | !AnswerPerson(card)
+!Shown:player,ME,card | !Weapon:card | !AnswerWeapon(card)
+!Shown:player,ME,card | !Room:card | !AnswerRoom(card)
+!Shown:player,ME,card | Has(player,card)
+
