@@ -11,17 +11,21 @@ public class RuleParser {
         RuleParser parser = new RuleParser();
         List<Rule> rules = parser.generateRules("files/rules.txt");
 
+        System.out.println("Number of rules found: " + rules.size());
+
         for (Rule rule : rules) {
-            System.out.println("RULE:");
-            for (Predicate pred : rule.predicates) {
+            for (int i = 0; i < rule.predicates.size(); i++) {
+                Predicate pred = rule.predicates.get(i);
                 System.out.print(pred.name + ":");
-                for (int i = 0; i < pred.variables.size(); i++) {
-                    System.out.print(pred.variables.get(i));
-                    if (i != pred.variables.size() - 1) {
+                for (int j = 0; j < pred.symbols.size(); j++) {
+                    System.out.print(pred.symbols.get(j).name);
+                    if (j != pred.symbols.size() - 1) {
                         System.out.print(",");
                     }
                 }
-                System.out.println();
+                if (i != rule.predicates.size() - 1) {
+                    System.out.print(" | ");
+                }
             }
             System.out.println();
         }
@@ -36,31 +40,50 @@ public class RuleParser {
 
             String line;
             while (scanner.hasNextLine()) {
+
                 line = scanner.nextLine();
 
-                List<Predicate> preds = new LinkedList<Predicate>();
+                if (!line.equals("")) {
+                    List<Predicate> preds = new LinkedList<Predicate>();
 
-                String predName = "";
-                String[] predVars = {};
+                    String predName = "";
+                    String[] predVars = {};
 
-                int predStart = 0;
-                int argsStart = 0;
+                    int predStart = 0;
+                    int argsStart = 0;
 
-                for (int i = 0; i < line.length(); i++) {
-                    if (line.charAt(i) == ':') {
-                        predName = line.substring(predStart, i);
-                        argsStart = i + 1;
+                    boolean foundFullPred = false;
+
+                    for (int i = 0; i < line.length(); i++) {
+                        if (line.charAt(i) == ':') {
+                            predName = line.substring(predStart, i);
+                            argsStart = i + 1;
+                        }
+
+                        if (line.charAt(i) == '|' || i == line.length() - 1) {
+                            if (i == line.length() - 1) {
+                                predVars = line.substring(argsStart).split(",");
+                            } else {
+                                predVars = line.substring(argsStart, i).split(",");
+                            }
+                            predStart = i + 2;
+                            foundFullPred = true;
+                        }
+
+                        List<Symbol> predVarsList = new LinkedList<Symbol>();
+                        List<String> predVarsStringList = Arrays.asList(predVars);
+                        for (String varString : predVarsStringList) {
+                            predVarsList.add(new Variable(varString));
+                        }
+
+                        if (foundFullPred) {
+                            preds.add(new Predicate(predName, predVarsList));
+                            foundFullPred = false;
+                        }
                     }
 
-                    if (line.charAt(i) == '|') {
-                        predVars = line.substring(argsStart, i).split(",");
-                        predStart = i + 2;
-                    }
-
-                    preds.add(new Predicate(predName, Arrays.asList(predVars)));
+                    rules.add(new Rule(preds));
                 }
-
-                rules.add(new Rule(preds));
             }
 
             scanner.close();
