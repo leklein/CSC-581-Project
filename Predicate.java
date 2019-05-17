@@ -2,11 +2,11 @@ import java.util.List;
 
 public class Predicate {
    public String name;
-   public List<String> variables;
+   public List<Symbol> symbols;
 
-   public Predicate(String name, List<String> variables) {
+   public Predicate(String name, List<Symbol> symbols) {
       this.name = name;
-      this.variables = variables;
+      this.symbols = symbols;
    }
 
    public boolean equals(Object other) {
@@ -15,6 +15,6 @@ public class Predicate {
       }
       Predicate o = (Predicate)other;
       return (o.name.equals(name) &
-              o.variables.equals(variables));
+              o.symbols.equals(symbols));
    }
 }
