@@ -2,8 +2,9 @@
      File -> S
         S -> Rule "\n" S | Rule
      Rule -> Predicate "|" Rule | Predicate
-Predicate -> __name__ ":" Variables
-Variables -> Variable "," Variables | Variable
- Variable -> __variable__
+Predicate -> name ":" Symbols
+  Symbols -> Symbol Symbols | Symbol
+   Symbol -> Variable | Instance
+ Instance -> "_" name
+ Variable -> name
 
-(note: __name__, __variable__ denote a string representing the predicate name and variable names, respectively)

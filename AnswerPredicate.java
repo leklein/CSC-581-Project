@@ -1,8 +1,8 @@
 import java.util.List;
 
 public class AnswerPredicate extends Predicate {
-   public AnswerPredicate(List<String> variables) {
-      super(null, variables);
+   public AnswerPredicate(List<Symbol> symbols) {
+      super(null, symbols);
    }
 
    public boolean equals(Object other) {
@@ -10,6 +10,6 @@ public class AnswerPredicate extends Predicate {
          return false;
       }
       AnswerPredicate o = (AnswerPredicate)other;
-      return o.variables.equals(variables);
+      return o.symbols.equals(symbols);
    }
 }
