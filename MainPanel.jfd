@@ -226,22 +226,35 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 				add( new FormComponent( "javax.swing.JComboBox" ) {
 					name: "guessPersonComboBox"
+					"model": new javax.swing.DefaultComboBoxModel {
+						selectedItem: "TestPerson"
+						addElement( "TestPerson" )
+					}
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"gridy": 1
 				} )
 				add( new FormComponent( "javax.swing.JComboBox" ) {
 					name: "guessWeaponComboBox"
+					"model": new javax.swing.DefaultComboBoxModel {
+						selectedItem: "TestWeapon"
+						addElement( "TestWeapon" )
+					}
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"gridy": 2
 				} )
 				add( new FormComponent( "javax.swing.JComboBox" ) {
 					name: "guessRoomComboBox"
+					"model": new javax.swing.DefaultComboBoxModel {
+						selectedItem: "TestRoom"
+						addElement( "TestRoom" )
+					}
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"gridy": 3
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button1"
+					name: "guessButton"
 					"text": "Make Guess"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "guessButtonActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"gridy": 4
 					"hAlign": 0

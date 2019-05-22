@@ -1,3 +1,5 @@
+import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -11,6 +13,8 @@ import java.awt.Insets;
 
 public class MainPanel extends JPanel
 {
+    public static String panelId = "MainPanel";
+
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel mainPanel;
     private JPanel handPanel;
@@ -25,14 +29,21 @@ public class MainPanel extends JPanel
     private JTable roomsTable;
     private JPanel inputPanel;
     private JLabel guessLabel;
-    private JComboBox guessPersonComboBox;
-    private JComboBox guessWeaponComboBox;
-    private JComboBox guessRoomComboBox;
-    private JButton button1;
+    private JComboBox<String> guessPersonComboBox;
+    private JComboBox<String> guessWeaponComboBox;
+    private JComboBox<String> guessRoomComboBox;
+    private JButton guessButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public MainPanel() {
         initComponents();
+    }
+
+    private void guessButtonActionPerformed(ActionEvent e) {
+        System.out.println("Guess button pressed with values: ");
+        System.out.println(guessPersonComboBox.getSelectedItem());
+        System.out.println(guessWeaponComboBox.getSelectedItem());
+        System.out.println(guessRoomComboBox.getSelectedItem());
     }
 
     private void initComponents() {
@@ -50,10 +61,10 @@ public class MainPanel extends JPanel
         roomsTable = new JTable();
         inputPanel = new JPanel();
         guessLabel = new JLabel();
-        guessPersonComboBox = new JComboBox();
-        guessWeaponComboBox = new JComboBox();
-        guessRoomComboBox = new JComboBox();
-        button1 = new JButton();
+        guessPersonComboBox = new JComboBox<>();
+        guessWeaponComboBox = new JComboBox<>();
+        guessRoomComboBox = new JComboBox<>();
+        guessButton = new JButton();
 
         //======== mainPanel ========
         {
@@ -202,19 +213,35 @@ public class MainPanel extends JPanel
                 inputPanel.add(guessLabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
+
+                //---- guessPersonComboBox ----
+                guessPersonComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
+                    "TestPerson"
+                }));
                 inputPanel.add(guessPersonComboBox, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
+
+                //---- guessWeaponComboBox ----
+                guessWeaponComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
+                    "TestWeapon"
+                }));
                 inputPanel.add(guessWeaponComboBox, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
+
+                //---- guessRoomComboBox ----
+                guessRoomComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
+                    "TestRoom"
+                }));
                 inputPanel.add(guessRoomComboBox, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
 
-                //---- button1 ----
-                button1.setText("Make Guess");
-                inputPanel.add(button1, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                //---- guessButton ----
+                guessButton.setText("Make Guess");
+                guessButton.addActionListener(e -> guessButtonActionPerformed(e));
+                inputPanel.add(guessButton, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 0, 0), 0, 0));
             }
