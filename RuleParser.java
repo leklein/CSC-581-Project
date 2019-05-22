@@ -7,9 +7,7 @@ import java.util.LinkedList;
 
 public class RuleParser {
 
-    public static void main(String[] args) {
-        RuleParser parser = new RuleParser();
-        List<Rule> rules = parser.generateRules("files/rules.txt");
+    public void parse(List<Rule> rules) {
 
         System.out.println("Number of rules found: " + rules.size());
 
