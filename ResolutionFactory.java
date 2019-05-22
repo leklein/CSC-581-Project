@@ -2,7 +2,6 @@ import java.util.List;
 import java.util.LinkedList;
 
 public class ResolutionFactory {
-
    /*
     * Uses forward chaining to add new predicates to the list
     * rules: the list of rules
@@ -13,6 +12,9 @@ public class ResolutionFactory {
          workspace = resolve_inner(rules, workspace);
       }
    }
+
+
+   /* ----- Helper functions ----- */
 
    /*
     * Uses forward chaining to add new predicates to the list
