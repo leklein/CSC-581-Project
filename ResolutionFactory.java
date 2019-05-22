@@ -2,14 +2,31 @@ import java.util.List;
 import java.util.LinkedList;
 
 public class ResolutionFactory {
+   static List<Rule> rules;
+   /*
+    * Mark a card as shown in the list of rules and resolve
+    */
+   public static void add_and_resolve(String card, String player) {
+      Instance instance = new Instance(card);
+      LinkedList<Symbol> instanceList = new LinkedList<Symbol>();
+      instanceList.add(instance);
+      Predicate shown = new Predicate("Shown", instanceList);
+      LinkedList<Predicate> predicateList = new LinkedList<>();
+      Rule shownRule = new Rule(predicateList);
+      rules.add(shownRule);
+      resolve();
+   }
+   
+
+
+
    /*
     * Uses forward chaining to add new predicates to the list
-    * rules: the list of rules
     */
-   public static void resolve(List<Rule> rules) {
-      List<Rule> workspace = resolve_inner(rules, new LinkedList<Rule>(rules));
+   public static void resolve() {
+      List<Rule> workspace = resolve_inner(new LinkedList<Rule>(rules));
       while (0 < workspace.size()) {
-         workspace = resolve_inner(rules, workspace);
+         workspace = resolve_inner(workspace);
       }
    }
 
@@ -18,12 +35,10 @@ public class ResolutionFactory {
 
    /*
     * Uses forward chaining to add new predicates to the list
-    * rules: the list of rules
     * workspace: the list of rules that have yet to be examined
     * returns what is left of workspace after cleanup
     */
-   public static List<Rule> resolve_inner(List<Rule> rules, 
-                                          List<Rule> workspace) {
+   public static List<Rule> resolve_inner(List<Rule> workspace) {
       /*
        * Initialize array of all false
        * cleanup[i] means workspace[i] has been used, remove from list
