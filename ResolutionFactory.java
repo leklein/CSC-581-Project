@@ -57,16 +57,14 @@ public class ResolutionFactory {
       resolve();
    }
    
-
-
-
    /*
     * Uses forward chaining to add new predicates to the list
     */
    public void resolve() {
-      List<Rule> workspace = resolve_inner(new LinkedList<Rule>(rules));
+      List<Rule> workspace = new LinkedList<Rule>(rules);
+      resolve_inner(workspace);
       while (0 < workspace.size()) {
-         workspace = resolve_inner(workspace);
+         resolve_inner(workspace);
       }
    }
 
@@ -78,7 +76,7 @@ public class ResolutionFactory {
     * workspace: the list of rules that have yet to be examined
     * returns what is left of workspace after cleanup
     */
-   public List<Rule> resolve_inner(List<Rule> workspace) {
+   private resolve_inner(List<Rule> workspace) {
       /*
        * Initialize array of all false
        * cleanup[i] means workspace[i] has been used, remove from list
@@ -96,7 +94,6 @@ public class ResolutionFactory {
 
       // cleanup and return workspace
       cleanup_workspace(workspace, cleanup);
-      return workspace;
    }
 
 
@@ -106,7 +103,7 @@ public class ResolutionFactory {
     * cleanup - list of booleans such that cleanup[i] means workspace[i] should
     *           be removed
     */
-   public void cleanup_workspace(List<Rule> workspace, boolean[] cleanup) {
+   private void cleanup_workspace(List<Rule> workspace, boolean[] cleanup) {
       for (int i = workspace.size() - 1; i >= 0; i--) {
          if (cleanup[i]) {
             workspace.remove(i);
