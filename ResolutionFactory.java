@@ -93,6 +93,25 @@ public class ResolutionFactory {
       cleanup_workspace(workspace, cleanup);
    }
 
+   private List<List<Integer>> create_permutations(List<List<Predicate>> all_preds) {
+      List<List<Integer>> permutations;
+      if (1 == all_preds.size()) {
+         permutations = new List<List<Integer>>();
+         for (int i = 0; i < all_preds.get(0); i++) {
+            LinkedList<Integer> l = new LinkedList<Integer>();
+            l.add(i);
+            permutations.add(l);
+         }
+         return permutations;
+      }
+
+      List<List<Predicate>> dup_all_preds = new LinkedList<List<Predicate>>(all_preds);
+
+      permutations = create_permutations
+
+
+   }
+
    /*
     * Creates a workspace of non-atomic rules
     */
