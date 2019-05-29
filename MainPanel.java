@@ -10,10 +10,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.List;
 
 public class MainPanel extends JPanel
 {
     public static String panelId = "MainPanel";
+
+    private Scorecard scorecard;
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel mainPanel;
@@ -35,15 +38,13 @@ public class MainPanel extends JPanel
     private JButton guessButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-    public MainPanel() {
+    public MainPanel(List<String> people, List<String> weapons, List<String> rooms) {
         initComponents();
-    }
 
-    private void guessButtonActionPerformed(ActionEvent e) {
-        System.out.println("Guess button pressed with values: ");
-        System.out.println(guessPersonComboBox.getSelectedItem());
-        System.out.println(guessWeaponComboBox.getSelectedItem());
-        System.out.println(guessRoomComboBox.getSelectedItem());
+        scorecard = new Scorecard(people, weapons, rooms);
+        peopleTable.setModel(scorecard.people);
+        weaponsTable.setModel(scorecard.weapons);
+        roomsTable.setModel(scorecard.rooms);
     }
 
     private void initComponents() {
@@ -125,21 +126,6 @@ public class MainPanel extends JPanel
                 knowledgeCardPanel.add(peopleLabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                     new Insets(0, 0, 5, 5), 0, 0));
-
-                //---- peopleTable ----
-                peopleTable.setModel(new DefaultTableModel(
-                    new Object[][] {
-                        {"Mr. Green"},
-                        {"Colonel Mustard"},
-                        {"Mrs. Peacock"},
-                        {"Professor Plum"},
-                        {"Miss Scarlet"},
-                        {"Mrs. White"},
-                    },
-                    new String[] {
-                        null
-                    }
-                ));
                 knowledgeCardPanel.add(peopleTable, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
@@ -149,21 +135,6 @@ public class MainPanel extends JPanel
                 knowledgeCardPanel.add(weaponsLabel, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                     GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                     new Insets(0, 0, 5, 5), 0, 0));
-
-                //---- weaponsTable ----
-                weaponsTable.setModel(new DefaultTableModel(
-                    new Object[][] {
-                        {"Candlestick"},
-                        {"Knife"},
-                        {"Lead Pipe"},
-                        {"Revolver"},
-                        {"Rope"},
-                        {"Wrench"},
-                    },
-                    new String[] {
-                        null
-                    }
-                ));
                 knowledgeCardPanel.add(weaponsTable, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
@@ -173,24 +144,6 @@ public class MainPanel extends JPanel
                 knowledgeCardPanel.add(roomsLabel, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                     GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                     new Insets(0, 0, 0, 5), 0, 0));
-
-                //---- roomsTable ----
-                roomsTable.setModel(new DefaultTableModel(
-                    new Object[][] {
-                        {"Ballroom"},
-                        {"Billiard Room"},
-                        {"Conservatory"},
-                        {"Dining Room"},
-                        {"Hall"},
-                        {"Kitchen"},
-                        {"Library"},
-                        {"Lounge"},
-                        {"Study"},
-                    },
-                    new String[] {
-                        null
-                    }
-                ));
                 knowledgeCardPanel.add(roomsTable, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 0), 0, 0));
@@ -250,5 +203,32 @@ public class MainPanel extends JPanel
                 new Insets(0, 0, 0, 0), 0, 0));
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+
+    private void guessButtonActionPerformed(ActionEvent e) {
+        System.out.println("Guess button pressed with values: ");
+        System.out.println(guessPersonComboBox.getSelectedItem());
+        System.out.println(guessWeaponComboBox.getSelectedItem());
+        System.out.println(guessRoomComboBox.getSelectedItem());
+
+        //TODO call into resolution factory with these three values
+    }
+
+    private void refreshUi()
+    {
+        peopleTable.updateUI();
+        weaponsTable.updateUI();
+        roomsTable.updateUI();
+    }
+
+    public void setHand(List<String> cards)
+    {
+        //TODO set handTable.model to initial cards
+    }
+
+    public void markRow(String rowName, ResolutionFactory.Info rowValue)
+    {
+        scorecard.updateRow(rowName, rowValue);
+        refreshUi();
     }
 }
