@@ -105,8 +105,7 @@ public class ResolutionFactory {
          return permutations;
       }
 
-      List<List<Predicate>> dup_all_preds = new LinkedList<List<Predicate>>(all_preds);
-
+      List<Predicate> removed = all_preds
       permutations = create_permutations
 
 
