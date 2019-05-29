@@ -93,11 +93,18 @@ public class ResolutionFactory {
       cleanup_workspace(workspace, cleanup);
    }
 
+   /*
+    * Creates all possible ordered tuples to index into each list of preds inside
+    * of a list of preds
+    * all_preds: a list of list of predicates with size at least 1
+    */
    private List<List<Integer>> create_permutations(List<List<Predicate>> all_preds) {
-      List<List<Integer>> permutations;
+      /* The list to be returned */
+      List<List<Integer>> permutations = new LinkedList<List<Integer>>();
+
       if (1 == all_preds.size()) {
-         permutations = new List<List<Integer>>();
-         for (int i = 0; i < all_preds.get(0); i++) {
+         /* Create 1-tuples of all numbers from 0 to size - 1 */
+         for (int i = 0; i < all_preds.get(0).size(); i++) {
             LinkedList<Integer> l = new LinkedList<Integer>();
             l.add(i);
             permutations.add(l);
@@ -105,10 +112,26 @@ public class ResolutionFactory {
          return permutations;
       }
 
-      List<Predicate> removed = all_preds
-      permutations = create_permutations
+      /* Recurse */
+      List<Predicate> removed = all_preds.get(0); /* Saving for later */
+      all_preds.remove(0); /* Reduce problem size */
+      List<List<Integer>> prev_permutations = create_permutations(all_preds); /* Get previous permutations */
 
-
+      for (int i = 0; i < removed.size(); i++) {
+         /* 
+          * For every tuple in the previous permutations, add i as a new element
+          * at the front of the list
+          */
+         for (List<Integer> tuple : prev_permutations) {
+            /* avoid contamination of original tuple */
+            List<Integer> update_tuple = new LinkedList<Integer>(tuple);
+            /* add new index */
+            update_tuple.add(0, i);
+            /* add to permutation */
+            permutations.add(update_tuple);
+         }
+      }
+      return permutations;
    }
 
    /*
