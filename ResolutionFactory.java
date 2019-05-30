@@ -88,9 +88,14 @@ public class ResolutionFactory {
          // TODO - for all things that satisfy all ps, add q
          List<List<Symbol>> all_preds = collect_satisfying_symbols(rule);
          if (null != all_preds) {
-            List<List<Integer>> tuples = 
-         }
+            /* create all permutations of possible matchings */
+            List<List<Integer>> tuples = create_permutations(new LinkedList(all_preds));
 
+            // TODO - for each tuple, if satisfies rule, add q
+            
+            /* Mark rule for cleanup */
+            cleanup[i] = true;
+         }
       }
 
       // cleanup and return workspace
