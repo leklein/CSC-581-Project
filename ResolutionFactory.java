@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Hashtable;
 
 public class ResolutionFactory {
     List<Rule> knowledgeBase;
@@ -100,6 +101,7 @@ public class ResolutionFactory {
             List<List<Integer>> tuples = create_permutations(new LinkedList<List<Symbol>>(all_preds));
 
             // TODO - for each tuple, if satisfies rule, add q
+            resolve_all_possible(rule, all_preds, tuples);
             
             /* Mark rule for cleanup */
             cleanup[i] = true;
@@ -110,6 +112,35 @@ public class ResolutionFactory {
       // cleanup and return workspace
       cleanup_workspace(workspace, cleanup);
       return resolved;
+   }
+
+   /*
+    * Given a rule, a list of symbols that satisfy the predicates on the left
+    * side of the implication for that rule, and a list of all possible tuples,
+    * see if any tuples produce a valid substitution for that rule and add
+    * to the workspace if so
+    */
+   private void resolve_all_possible(Rule rule,
+                                     List<List<Symbol>> all_preds,
+                                     List<List<Integer>> tuples) {
+      for (List<Integer> tuple: tuples) {
+         resolve_one_possible(rule, all_preds, tuple);
+      }
+   }
+
+   /*
+    * Given a rule, a list of symbols that satisfy the predicates on the left
+    * side of the implication for that rule, and a tuples,
+    * see if that tuple produces a valid substitution for that rule and add
+    * to the workspace if so
+    */
+   private void resolve_one_possible(Rule rule,
+                                     List<List<Symbol>> all_preds,
+                                     List<Integer> tuple) {
+      Hashtable<String, String> replaceDict = new Hashtable<String, String>();
+      for (int i = 0; i < tuple.size(); i++) {
+         // TODO: if have P(x,y), find out if x and y are just shoved together in the list or not
+      }
    }
 
 
