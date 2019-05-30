@@ -62,9 +62,16 @@ public class ResolutionFactory {
     */
    public void resolve() {
       List<Rule> workspace = create_workspace();
-      resolve_inner(workspace);
-      while (0 < workspace.size()) {
-         resolve_inner(workspace);
+      /* 
+       * resolved is true if a rule was resolved in the last call to
+       * resolve_inner and false otherwise
+       * if resolved is false, means that no new atomic predicates can be added
+       * with the existing information
+       */
+      boolean resolved = resolve_inner(workspace);
+      /* Keep resolving rules until no more rules can be resolved */
+      while (0 < workspace.size() && resolved) {
+         resolved = resolve_inner(workspace);
       }
    }
 
@@ -74,13 +81,14 @@ public class ResolutionFactory {
    /*
     * Uses forward chaining to add new predicates to the list
     * workspace: the list of rules that have yet to be examined
-    * returns what is left of workspace after cleanup
+    * returns true if a rule was removed and false otherwise
     */
-   private void resolve_inner(List<Rule> workspace) {
+   private boolean resolve_inner(List<Rule> workspace) {
       /*
        * Initialize array of all false
        * cleanup[i] means workspace[i] has been used, remove from list
        */
+      boolean resolved = false;
       boolean[] cleanup = new boolean[workspace.size()];
       for (int i = 0; i < workspace.size(); i++) {
          Rule rule = workspace.get(i);
@@ -95,11 +103,13 @@ public class ResolutionFactory {
             
             /* Mark rule for cleanup */
             cleanup[i] = true;
+            resolved = true;
          }
       }
 
       // cleanup and return workspace
       cleanup_workspace(workspace, cleanup);
+      return resolved;
    }
 
 
