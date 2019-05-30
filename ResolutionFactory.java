@@ -98,7 +98,7 @@ public class ResolutionFactory {
     * of a list of preds
     * all_preds: a list of list of predicates with size at least 1
     */
-   private List<List<Integer>> create_permutations(List<List<Predicate>> all_preds) {
+   private List<List<Integer>> create_permutations(List<List<Symbol>> all_preds) {
       /* The list to be returned */
       List<List<Integer>> permutations = new LinkedList<List<Integer>>();
 
@@ -113,7 +113,7 @@ public class ResolutionFactory {
       }
 
       /* Recurse */
-      List<Predicate> removed = all_preds.get(0); /* Saving for later */
+      List<Symbol> removed = all_preds.get(0); /* Saving for later */
       all_preds.remove(0); /* Reduce problem size */
       List<List<Integer>> prev_permutations = create_permutations(all_preds); /* Get previous permutations */
 
