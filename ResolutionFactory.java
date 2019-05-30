@@ -86,12 +86,17 @@ public class ResolutionFactory {
          Rule rule = workspace.get(i);
 
          // TODO - for all things that satisfy all ps, add q
+         List<List<Symbol>> all_preds = collect_satisfying_symbols(rule);
+         if (null != all_preds) {
+            List<List<Integer>> tuples = 
+         }
 
       }
 
       // cleanup and return workspace
       cleanup_workspace(workspace, cleanup);
    }
+
 
    /*
     * Given a Rule representing a horn clause, colects all symbols that satisfy
