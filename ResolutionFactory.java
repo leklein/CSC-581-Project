@@ -94,6 +94,26 @@ public class ResolutionFactory {
    }
 
    /*
+    * Given a Rule representing a horn clause, colects all symbols that satisfy
+    * predicates on the left side of the implication
+    * if at least one predicate has no satisfying symbols, returns null
+    */
+   private List<List<Symbol>> collect_satisfying_symbols(Rule rule) {
+      List<List<Symbol>> all_preds = new LinkedList<List<Symbol>>();
+      /* For every predicate on the left side of the implication: */
+      for (int i = 0; i < rule.predicates.size() - 1; i++) {
+         /* Collect all symbols that satisfy each predicate */
+         List<Symbol> symbols = getSymbolsFromPredicate(rule.predicates.get(i), true);
+         /* If size of returned list is 0, return null */
+         if (0 == symbols.size()) {
+            return null;
+         }
+         all_preds.add(symbols);
+      }
+      return all_preds;
+   }
+
+   /*
     * Creates all possible ordered tuples to index into each list of preds inside
     * of a list of preds
     * all_preds: a list of list of predicates with size at least 1
