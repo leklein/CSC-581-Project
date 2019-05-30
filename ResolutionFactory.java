@@ -89,7 +89,7 @@ public class ResolutionFactory {
          List<List<Symbol>> all_preds = collect_satisfying_symbols(rule);
          if (null != all_preds) {
             /* create all permutations of possible matchings */
-            List<List<Integer>> tuples = create_permutations(new LinkedList(all_preds));
+            List<List<Integer>> tuples = create_permutations(new LinkedList<List<Symbol>>(all_preds));
 
             // TODO - for each tuple, if satisfies rule, add q
             
@@ -113,7 +113,7 @@ public class ResolutionFactory {
       /* For every predicate on the left side of the implication: */
       for (int i = 0; i < rule.predicates.size() - 1; i++) {
          /* Collect all symbols that satisfy each predicate */
-         List<Symbol> symbols = getSymbolsFromPredicate(rule.predicates.get(i), true);
+         List<Symbol> symbols = getSymbolsFromPredicate(rule.predicates.get(i).name, true);
          /* If size of returned list is 0, return null */
          if (0 == symbols.size()) {
             return null;
