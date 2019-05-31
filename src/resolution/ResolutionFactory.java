@@ -96,13 +96,11 @@ public class ResolutionFactory {
       for (int i = 0; i < workspace.size(); i++) {
          Rule rule = workspace.get(i);
 
-         // TODO - for all things that satisfy all ps, add q
          List<List<List<Symbol>>> all_preds = collect_satisfying_symbols(rule);
          if (null != all_preds) {
             /* create all permutations of possible matchings */
             List<List<Integer>> tuples = create_permutations(new LinkedList<List<List<Symbol>>>(all_preds));
 
-            // TODO - for each tuple, if satisfies rule, add q
             resolve_all_possible(rule, all_preds, tuples);
             
             /* Mark rule for cleanup */
@@ -139,12 +137,43 @@ public class ResolutionFactory {
    private void resolve_one_possible(Rule rule,
                                      List<List<List<Symbol>>> all_preds,
                                      List<Integer> tuple) {
+      /* Used to check for conflicting definitions of variables */
       Hashtable<String, String> replaceDict = new Hashtable<String, String>();
+      /* For each element of the tuple, do: */
       for (int i = 0; i < tuple.size(); i++) {
-         // TODO: if have P(x,y), find out if x and y are just shoved together in the list or not
+         /* find the associated symbols from the predicate */
+         List<Symbol> pred_symbols = all_preds.get(i).get(tuple.get(i));
+         /* Check if the tuple satisfies the rule */
+         for (int j = 0; j < pred_symbols.size(); j++) {
+            String res = replaceDict.get(rule.predicates.get(i).symbols.get(i).name);
+            if (null == res) {
+               /* haven't seen this symbol defined before; add to dictionary */
+               replaceDict.put(res, pred_symbols.get(j).name);
+            }
+            else if (!pred_symbols.get(j).equals(res)) {
+               /* Contradicts previous information, so this tuple won't work */
+               return;
+            }
+         }
       }
-   }
 
+      /* 
+       * No contradiction has been found, so tuple produces valid interpretation
+       * Add right side of implication to rules
+       */
+      List<Symbol> symbols = new LinkedList<Symbol>();
+      Predicate rhs = rule.predicates.get(rule.predicates.size() - 1);
+      for (Symbol symbol: rhs.symbols) {
+         /* Add the names of the instance to the new predicate */
+         symbols.add(new Instance(replaceDict.get(symbol.name)));
+      }
+      /* Make an atomic rule and add to the knowledgebase */
+      Predicate predicate = new Predicate(rhs.name, symbols);
+      List<Predicate> wrapper = new LinkedList<Predicate>();
+      wrapper.add(predicate);
+      Rule newrule = new Rule(wrapper);
+      knowledgeBase.add(newrule);
+   }
 
    /*
     * Given a resolution.Rule representing a horn clause, colects all symbols that satisfy
