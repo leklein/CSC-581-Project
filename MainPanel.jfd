@@ -85,34 +85,6 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "peopleTable"
-					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
-						add( new java.util.Vector {
-							add( "Mr. Green" )
-						} )
-						add( new java.util.Vector {
-							add( "Colonel Mustard" )
-						} )
-						add( new java.util.Vector {
-							add( "Mrs. Peacock" )
-						} )
-						add( new java.util.Vector {
-							add( "Professor Plum" )
-						} )
-						add( new java.util.Vector {
-							add( "Miss Scarlet" )
-						} )
-						add( new java.util.Vector {
-							add( "Mrs. White" )
-						} )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"gridx": 1
 				} )
@@ -125,34 +97,6 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "weaponsTable"
-					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
-						add( new java.util.Vector {
-							add( "Candlestick" )
-						} )
-						add( new java.util.Vector {
-							add( "Knife" )
-						} )
-						add( new java.util.Vector {
-							add( "Lead Pipe" )
-						} )
-						add( new java.util.Vector {
-							add( "Revolver" )
-						} )
-						add( new java.util.Vector {
-							add( "Rope" )
-						} )
-						add( new java.util.Vector {
-							add( "Wrench" )
-						} )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"gridy": 1
 					"gridx": 1
@@ -166,43 +110,6 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "roomsTable"
-					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
-						add( new java.util.Vector {
-							add( "Ballroom" )
-						} )
-						add( new java.util.Vector {
-							add( "Billiard Room" )
-						} )
-						add( new java.util.Vector {
-							add( "Conservatory" )
-						} )
-						add( new java.util.Vector {
-							add( "Dining Room" )
-						} )
-						add( new java.util.Vector {
-							add( "Hall" )
-						} )
-						add( new java.util.Vector {
-							add( "Kitchen" )
-						} )
-						add( new java.util.Vector {
-							add( "Library" )
-						} )
-						add( new java.util.Vector {
-							add( "Lounge" )
-						} )
-						add( new java.util.Vector {
-							add( "Study" )
-						} )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"gridy": 2
 					"gridx": 1
