@@ -14,12 +14,12 @@ public class ResolutionFactory {
         YES, NO, UNKNOWN;
     }
    
-    public List<Symbol> getSymbolsFromPredicate(String predStr, boolean negated) {
-        List<Symbol> symbols = new LinkedList<Symbol>();
+    public List<List<Symbol>> getSymbolsFromPredicate(String predStr, boolean negated) {
+        List<List<Symbol>> symbols = new LinkedList<List<Symbol>>();
         for (Rule rule : knowledgeBase) {
             if (rule.predicates.size() == 1) {
                 if (rule.predicates.get(0).name.equals(predStr) && rule.predicates.get(0).negated == negated) {
-                    symbols.addAll(rule.predicates.get(0).symbols);
+                    symbols.add(rule.predicates.get(0).symbols);
                 }
             }
         }
@@ -95,10 +95,10 @@ public class ResolutionFactory {
          Rule rule = workspace.get(i);
 
          // TODO - for all things that satisfy all ps, add q
-         List<List<Symbol>> all_preds = collect_satisfying_symbols(rule);
+         List<List<List<Symbol>>> all_preds = collect_satisfying_symbols(rule);
          if (null != all_preds) {
             /* create all permutations of possible matchings */
-            List<List<Integer>> tuples = create_permutations(new LinkedList<List<Symbol>>(all_preds));
+            List<List<Integer>> tuples = create_permutations(new LinkedList<List<List<Symbol>>>(all_preds));
 
             // TODO - for each tuple, if satisfies rule, add q
             resolve_all_possible(rule, all_preds, tuples);
@@ -121,7 +121,7 @@ public class ResolutionFactory {
     * to the workspace if so
     */
    private void resolve_all_possible(Rule rule,
-                                     List<List<Symbol>> all_preds,
+                                     List<List<List<Symbol>>> all_preds,
                                      List<List<Integer>> tuples) {
       for (List<Integer> tuple: tuples) {
          resolve_one_possible(rule, all_preds, tuple);
@@ -135,7 +135,7 @@ public class ResolutionFactory {
     * to the workspace if so
     */
    private void resolve_one_possible(Rule rule,
-                                     List<List<Symbol>> all_preds,
+                                     List<List<List<Symbol>>> all_preds,
                                      List<Integer> tuple) {
       Hashtable<String, String> replaceDict = new Hashtable<String, String>();
       for (int i = 0; i < tuple.size(); i++) {
@@ -149,12 +149,12 @@ public class ResolutionFactory {
     * predicates on the left side of the implication
     * if at least one predicate has no satisfying symbols, returns null
     */
-   private List<List<Symbol>> collect_satisfying_symbols(Rule rule) {
-      List<List<Symbol>> all_preds = new LinkedList<List<Symbol>>();
+   private List<List<List<Symbol>>> collect_satisfying_symbols(Rule rule) {
+      List<List<List<Symbol>>> all_preds = new LinkedList<List<List<Symbol>>>();
       /* For every predicate on the left side of the implication: */
       for (int i = 0; i < rule.predicates.size() - 1; i++) {
          /* Collect all symbols that satisfy each predicate */
-         List<Symbol> symbols = getSymbolsFromPredicate(rule.predicates.get(i).name, true);
+         List<List<Symbol>> symbols = getSymbolsFromPredicate(rule.predicates.get(i).name, true);
          /* If size of returned list is 0, return null */
          if (0 == symbols.size()) {
             return null;
@@ -169,7 +169,7 @@ public class ResolutionFactory {
     * of a list of preds
     * all_preds: a list of list of predicates with size at least 1
     */
-   private List<List<Integer>> create_permutations(List<List<Symbol>> all_preds) {
+   private List<List<Integer>> create_permutations(List<List<List<Symbol>>> all_preds) {
       /* The list to be returned */
       List<List<Integer>> permutations = new LinkedList<List<Integer>>();
 
@@ -184,7 +184,7 @@ public class ResolutionFactory {
       }
 
       /* Recurse */
-      List<Symbol> removed = all_preds.get(0); /* Saving for later */
+      List<List<Symbol>> removed = all_preds.get(0); /* Saving for later */
       all_preds.remove(0); /* Reduce problem size */
       List<List<Integer>> prev_permutations = create_permutations(all_preds); /* Get previous permutations */
 
