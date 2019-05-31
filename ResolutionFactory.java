@@ -94,13 +94,11 @@ public class ResolutionFactory {
       for (int i = 0; i < workspace.size(); i++) {
          Rule rule = workspace.get(i);
 
-         // TODO - for all things that satisfy all ps, add q
          List<List<List<Symbol>>> all_preds = collect_satisfying_symbols(rule);
          if (null != all_preds) {
             /* create all permutations of possible matchings */
             List<List<Integer>> tuples = create_permutations(new LinkedList<List<List<Symbol>>>(all_preds));
 
-            // TODO - for each tuple, if satisfies rule, add q
             resolve_all_possible(rule, all_preds, tuples);
             
             /* Mark rule for cleanup */
