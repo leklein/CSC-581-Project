@@ -1,3 +1,7 @@
+package driver;
+
+import resolution.ResolutionFactory;
+
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.JButton;

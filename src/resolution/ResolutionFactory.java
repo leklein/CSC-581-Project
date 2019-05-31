@@ -1,3 +1,5 @@
+package resolution;
+
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Hashtable;
@@ -145,7 +147,7 @@ public class ResolutionFactory {
 
 
    /*
-    * Given a Rule representing a horn clause, colects all symbols that satisfy
+    * Given a resolution.Rule representing a horn clause, colects all symbols that satisfy
     * predicates on the left side of the implication
     * if at least one predicate has no satisfying symbols, returns null
     */

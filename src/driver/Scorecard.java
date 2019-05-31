@@ -1,7 +1,7 @@
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableModel;
-import java.util.HashMap;
+package driver;
+
+import resolution.ResolutionFactory;
+
 import java.util.List;
 
 public class Scorecard

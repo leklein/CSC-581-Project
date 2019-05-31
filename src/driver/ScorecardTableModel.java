@@ -1,3 +1,7 @@
+package driver;
+
+import resolution.ResolutionFactory;
+
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.util.ArrayList;

@@ -1,3 +1,5 @@
+package resolution;
+
 import java.util.List;
 
 public class Predicate {
