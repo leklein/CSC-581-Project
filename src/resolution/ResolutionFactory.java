@@ -185,7 +185,7 @@ public class ResolutionFactory {
       /* For every predicate on the left side of the implication: */
       for (int i = 0; i < rule.predicates.size() - 1; i++) {
          /* Collect all symbols that satisfy each predicate */
-         List<List<Symbol>> symbols = getSymbolsFromPredicate(rule.predicates.get(i).name, true);
+         List<List<Symbol>> symbols = getSymbolsFromPredicate(rule.predicates.get(i).name, !rule.predicates.get(i).negated);
          /* If size of returned list is 0, return null */
          if (0 == symbols.size()) {
             return null;
