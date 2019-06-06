@@ -20,7 +20,7 @@ public class RuleParser {
         return Arrays.toString(splitFact);
     }
 
-    public void parse(List<Rule> rules) {
+    public static void parse(List<Rule> rules) {
 
         System.out.println("Number of rules found: " + rules.size());
 
