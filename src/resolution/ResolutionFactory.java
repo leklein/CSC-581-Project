@@ -191,7 +191,9 @@ public class ResolutionFactory {
       List<Predicate> wrapper = new LinkedList<Predicate>();
       wrapper.add(predicate);
       Rule newrule = new Rule(wrapper);
-      knowledgeBase.add(newrule);
+      if (!knowledgeBase.contains(newrule)) {
+         knowledgeBase.add(newrule);
+      }
    }
 
    /*
