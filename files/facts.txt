@@ -19,4 +19,7 @@ Room:_kitchen
 Room:_library
 Room:_lounge
 Room:_study
-Player:_me
+Player:_1
+Player:_2
+Player:_3
+Player:_4

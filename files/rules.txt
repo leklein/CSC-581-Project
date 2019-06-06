@@ -1,7 +1,10 @@
 AnswerPerson:_mr_green | AnswerPerson:_colonel_mustard | AnswerPerson:_mrs_peacock | AnswerPerson:_professor_plum | AnswerPerson:_miss_scarlett | AnswerPerson:_mrs_white
-AnswerWeapon:_candlestick | AnswerWeapon:_knife | AnswerWeapon:_lead_pipe | AnswerWeapon:_revolver | AnswerWeapon:_wrench
+AnswerWeapon:_candlestick | AnswerWeapon:_knife | AnswerWeapon:_lead_pipe | AnswerWeapon:_revolver | AnswerWeapon:_rope | AnswerWeapon:_wrench
 AnswerRoom:_ballroom | AnswerRoom:_billiard_room | AnswerRoom:_conservatory | AnswerRoom:_dining_room | AnswerRoom:_hall | AnswerRoom:_kitchen | AnswerRoom:_library | AnswerRoom:_lounge | AnswerRoom:_study
-!Shown:player,card | !Person:card | !AnswerPerson:card
-!Shown:player,card | !Weapon:card | !AnswerWeapon:card
-!Shown:player,card | !Room:card | !AnswerRoom:card
-!Shown:player,card | Has:player,card
+!ShownToMe:player,card | !Person:card | !AnswerPerson:card
+!ShownToMe:player,card | !Weapon:card | !AnswerWeapon:card
+!ShownToMe:player,card | !Room:card | !AnswerRoom:card
+!ShownToMe:player,card | Has:player,card
+!Ask:playerA,cardPerson,cardWeapon,cardRoom | !Has:_1,cardPerson | !Has:_1,cardWeapon | !Shown(playerS,playerA) | Has(playerS,cardRoom)
+!Ask:playerA,cardPerson,cardWeapon,cardRoom | !Has:_1,cardWeapon | !Has:_1,cardRoom | !Shown(playerS,playerA) | Has(playerS,cardPerson)
+!Ask:playerA,cardPerson,cardWeapon,cardRoom | !Has:_1,cardPerson | !Has:_1,cardRoom | !Shown(playerS,playerA) | Has(playerS,cardWeapon)
