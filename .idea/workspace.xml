@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1311ee06-0c7f-45eb-9ec2-88da956d52e7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Repository.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/GameDriver$Scorecard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/GameDriver$ScorecardTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/GameDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clue Solver/driver/GameDriver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/MainPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/MainPanel.jfd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/Scorecard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clue Solver/driver/Scorecard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/ScorecardTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clue Solver/driver/ScorecardTableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/ResolutionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clue Solver/resolution/ResolutionFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/Rule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clue Solver/resolution/Rule.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/RuleParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clue Solver/resolution/RuleParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/driver/GameDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/GameDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/driver/GameDriverPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/GameDriverPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/driver/GameDriverPanel.jfd" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/GameDriverPanel.jfd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/driver/Scorecard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/Scorecard.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,13 +33,13 @@
       <file leaf-file-name="GameDriverPanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+            <state relative-caret-position="247">
+              <caret line="328" column="47" selection-start-line="328" selection-start-column="47" selection-end-line="328" selection-end-column="47" />
               <folding>
                 <element signature="e#9160#9161#0" expanded="true" />
                 <element signature="e#9221#9222#0" expanded="true" />
-                <marker date="1559841723319" expanded="false" signature="1611:13725" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-                <marker date="1559841723319" expanded="false" signature="16032:17172" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+                <marker date="1559845335893" expanded="false" signature="1611:13725" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+                <marker date="1559845335893" expanded="false" signature="16050:17190" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
               </folding>
             </state>
           </provider>
@@ -133,6 +113,8 @@
       <find>system</find>
       <find>players.get(currentPLayer)</find>
       <find>800</find>
+      <find>updateallrows</find>
+      <find>showbutton</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -550,9 +532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.jfd">
-      <provider selected="true" editor-type-id="JFormDesigner" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/driver/GameDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
@@ -560,15 +539,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.jfd">
+      <provider selected="true" editor-type-id="JFormDesigner" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        <state relative-caret-position="247">
+          <caret line="328" column="47" selection-start-line="328" selection-start-column="47" selection-end-line="328" selection-end-column="47" />
           <folding>
             <element signature="e#9160#9161#0" expanded="true" />
             <element signature="e#9221#9222#0" expanded="true" />
-            <marker date="1559841723319" expanded="false" signature="1611:13725" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1559841723319" expanded="false" signature="16032:17172" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+            <marker date="1559845335893" expanded="false" signature="1611:13725" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+            <marker date="1559845335893" expanded="false" signature="16050:17190" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
           </folding>
         </state>
       </provider>

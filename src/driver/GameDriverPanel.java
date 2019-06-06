@@ -322,7 +322,7 @@ public class GameDriverPanel extends JPanel
     }
 
     private void showButtonActionPerformed(ActionEvent e) {
-        if (showComboBox2.equals("User"))
+        if (showComboBox2.getSelectedItem().equals("User"))
         {
             resolutionFactory.add_and_resolve(showComboBox3.getSelectedItem().toString(),
                     showComboBox1.getSelectedItem().toString());
