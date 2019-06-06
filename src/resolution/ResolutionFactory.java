@@ -50,14 +50,33 @@ public class ResolutionFactory {
     * Mark a card as shown in the list of rules and resolve
     */
    public void add_and_resolve(String card, String player) {
-      Instance instance = new Instance(card);
+      Instance instanceC = new Instance(card);
+      Instance instanceP = new Instance(player);
       LinkedList<Symbol> instanceList = new LinkedList<Symbol>();
-      instanceList.add(instance);
+      instanceList.add(instanceP);
+      instanceList.add(instanceC);
       Predicate shown = new Predicate("ShownToMe", instanceList);
       LinkedList<Predicate> predicateList = new LinkedList<>();
       Rule shownRule = new Rule(predicateList);
       knowledgeBase.add(shownRule);
       resolve();
+   }
+
+   /*
+    * Mark that playerS showed playerA a card, resolve, then remove temporary rules
+    */
+   public void add_temp_and_resolve(String playerS, String playerA) {
+      Instance instanceA = new Instance(playerA);
+      Instance instanceP = new Instance(playerS);
+      LinkedList<Symbol> instanceList = new LinkedList<Symbol>();
+      instanceList.add(instanceP);
+      instanceList.add(instanceA);
+      Predicate shown = new Predicate("Shown", instanceList);
+      LinkedList<Predicate> predicateList = new LinkedList<>();
+      Rule shownRule = new Rule(predicateList, true);
+      knowledgeBase.add(shownRule);
+      resolve();
+      remove_temporary();
    }
    
    /*
@@ -92,7 +111,7 @@ public class ResolutionFactory {
        * cleanup[i] means workspace[i] has been used, remove from list
        */
       boolean resolved = false;
-      boolean[] cleanup = new boolean[workspace.size()];
+      LinkedList<Integer> cleanup = new LinkedList<Integer>();
       for (int i = 0; i < workspace.size(); i++) {
          Rule rule = workspace.get(i);
 
@@ -104,7 +123,7 @@ public class ResolutionFactory {
             resolve_all_possible(rule, all_preds, tuples);
             
             /* Mark rule for cleanup */
-            cleanup[i] = true;
+            cleanup.add(i);
             resolved = true;
          }
       }
@@ -255,10 +274,23 @@ public class ResolutionFactory {
     * cleanup - list of booleans such that cleanup[i] means workspace[i] should
     *           be removed
     */
-   private void cleanup_workspace(List<Rule> workspace, boolean[] cleanup) {
-      for (int i = workspace.size() - 1; i >= 0; i--) {
-         if (cleanup[i]) {
-            workspace.remove(i);
+   private void cleanup_workspace(List<Rule> workspace, List<Integer> cleanup) {
+      for (Integer i : cleanup) {
+         workspace.remove(i);
+      }
+   }
+
+   /*
+    * Removes temporary variables from the knowledgebase
+    */
+   private void remove_temporary() {
+      int i = 0;
+      while (i < knowledgeBase.size()) {
+         if (knowledgeBase.get(i).temporary) {
+            knowledgeBase.remove(i);
+         }
+         else {
+            i += 1;
          }
       }
    }
