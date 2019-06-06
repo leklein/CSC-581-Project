@@ -5,6 +5,4 @@ AnswerRoom:_ballroom | AnswerRoom:_billiard_room | AnswerRoom:_conservatory | An
 !ShownToMe:player,card | !Weapon:card | !AnswerWeapon:card
 !ShownToMe:player,card | !Room:card | !AnswerRoom:card
 !ShownToMe:player,card | Has:player,card
-!Ask:playerA,cardPerson,cardWeapon,cardRoom | !Has:_1,cardPerson | !Has:_1,cardWeapon | !Shown(playerS,playerA) | Has(playerS,cardRoom)
-!Ask:playerA,cardPerson,cardWeapon,cardRoom | !Has:_1,cardWeapon | !Has:_1,cardRoom | !Shown(playerS,playerA) | Has(playerS,cardPerson)
-!Ask:playerA,cardPerson,cardWeapon,cardRoom | !Has:_1,cardPerson | !Has:_1,cardRoom | !Shown(playerS,playerA) | Has(playerS,cardWeapon)
+!Ask:playerA,card1,card2,card3 | !Has:_1,card1 | !Has:_1,card2 | !Shown(playerS,playerA) | Has(playerS,card3)
