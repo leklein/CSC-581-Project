@@ -56,7 +56,8 @@ public class ResolutionFactory {
       instanceList.add(instanceP);
       instanceList.add(instanceC);
       Predicate shown = new Predicate("ShownToMe", instanceList);
-      LinkedList<Predicate> predicateList = new LinkedList<>();
+      LinkedList<Predicate> predicateList = new LinkedList<Predicate>();
+      predicateList.add(shown);
       Rule shownRule = new Rule(predicateList);
       knowledgeBase.add(shownRule);
       resolve();
@@ -73,6 +74,7 @@ public class ResolutionFactory {
       instanceList.add(instanceA);
       Predicate shown = new Predicate("Shown", instanceList);
       LinkedList<Predicate> predicateList = new LinkedList<>();
+      predicateList.add(shown);
       Rule shownRule = new Rule(predicateList, true);
       knowledgeBase.add(shownRule);
       resolve();
