@@ -9,6 +9,17 @@ import java.util.LinkedList;
 
 public class RuleParser {
 
+    public String factToUserFriendlyString(String fact)
+    {
+        String[] splitFact = fact.split("_");
+        for (int i = 0; i < splitFact.length; i++)
+        {
+            splitFact[i] = splitFact[i].trim() + " ";
+        }
+
+        return Arrays.toString(splitFact);
+    }
+
     public void parse(List<Rule> rules) {
 
         System.out.println("Number of rules found: " + rules.size());
