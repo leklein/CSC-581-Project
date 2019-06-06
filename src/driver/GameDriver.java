@@ -68,7 +68,7 @@ public class GameDriver
         players.add(new Player("User"));
         for (int player = 1; player < playerCount; player++)
         {
-            players.add(new Player("Player " + player + 1));
+            players.add(new Player("Player " + (player + 1)));
         }
 
         List<String> deck = new ArrayList<>();
@@ -103,7 +103,7 @@ public class GameDriver
 
     private static void createUi()
     {
-        gameDriverPanel = new GameDriverPanel(people, weapons, rooms);
+        gameDriverPanel = new GameDriverPanel(players, people, weapons, rooms);
 
         List<String> startingHand = players.get(0).getCards();
         gameDriverPanel.setHand(startingHand);
@@ -115,7 +115,7 @@ public class GameDriver
         JFrame frame = new JFrame("Clue Solver");
         frame.add(gameDriverPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 700);
+        frame.setSize(500, 775);
         frame.setVisible(true);
     }
 }

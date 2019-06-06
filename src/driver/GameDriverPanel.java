@@ -13,31 +13,43 @@ public class GameDriverPanel extends JPanel
 {
     public static String panelId = "MainPanel";
 
+    private List<Player> players;
+    private int currentPlayer = 0;
     private ResolutionFactory resolutionFactory;
     private Scorecard scorecard;
 
-    public GameDriverPanel(List<String> people, List<String> weapons, List<String> rooms)
+    private String personGuess;
+    private String weaponGuess;
+    private String roomGuess;
+
+    public GameDriverPanel(List<Player> players, List<String> people, List<String> weapons, List<String> rooms)
     {
         initComponents();
 
-        scorecard = new Scorecard(people, weapons, rooms);
+        this.players = players;
+        this.resolutionFactory = new ResolutionFactory();
+        this.scorecard = new Scorecard(people, weapons, rooms);
+
         peopleTable.setModel(scorecard.people);
         weaponsTable.setModel(scorecard.weapons);
         roomsTable.setModel(scorecard.rooms);
 
-        for (String person : people) guessPersonComboBox.addItem(person);
-        for (String weapon: weapons) guessWeaponComboBox.addItem(weapon);
-        for (String room: rooms) guessRoomComboBox.addItem(room);
-
-        resolutionFactory = new ResolutionFactory();
-    }
-
-    private void showButtonActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void nextPlayerButtonActionPerformed(ActionEvent e) {
-        // TODO add your code here
+        for (String person : people) {
+            guessPersonComboBox.addItem(person);
+            showComboBox3.addItem(person);
+        }
+        for (String weapon : weapons) {
+            guessWeaponComboBox.addItem(weapon);
+            showComboBox3.addItem(weapon);
+        }
+        for (String room : rooms) {
+            guessRoomComboBox.addItem(room);
+            showComboBox3.addItem(room);
+        }
+        for (Player player : players) {
+            showComboBox1.addItem(player.getName());
+            showComboBox2.addItem(player.getName());
+        }
     }
 
     private void initComponents() {
@@ -46,36 +58,38 @@ public class GameDriverPanel extends JPanel
         handLabel = new JLabel();
         handTable = new JTable();
         knowledgeCardPanel = new JPanel();
+        scorecardLabel = new JLabel();
         peopleLabel = new JLabel();
         peopleTable = new JTable();
         weaponsLabel = new JLabel();
         weaponsTable = new JTable();
         roomsLabel = new JLabel();
         roomsTable = new JTable();
+        separator = new JSeparator();
+        inputLabel = new JLabel();
         inputPanel = new JPanel();
         guessPanel = new JPanel();
         guessPersonComboBox = new JComboBox();
-        label4 = new JLabel();
+        guessLabel1 = new JLabel();
         guessWeaponComboBox = new JComboBox();
+        guessLabel2 = new JLabel();
         guessRoomComboBox = new JComboBox();
         guessButton = new JButton();
         showPanel = new JPanel();
-        label3 = new JLabel();
-        guessPersonComboBox2 = new JComboBox();
-        label1 = new JLabel();
-        guessWeaponComboBox2 = new JComboBox();
-        label2 = new JLabel();
-        guessRoomComboBox2 = new JComboBox();
+        showComboBox1 = new JComboBox();
+        showLabel2 = new JLabel();
+        showComboBox2 = new JComboBox();
+        showLabel3 = new JLabel();
+        showComboBox3 = new JComboBox<>();
         showButton = new JButton();
-        separator1 = new JSeparator();
-        button1 = new JButton();
+        nextPlayerButton = new JButton();
 
         //======== this ========
         setLayout(new GridBagLayout());
         ((GridBagLayout)getLayout()).columnWidths = new int[] {0, 0};
-        ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0, 0, 0};
+        ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0};
         ((GridBagLayout)getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
-        ((GridBagLayout)getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
+        ((GridBagLayout)getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0E-4};
 
         //======== handPanel ========
         {
@@ -88,8 +102,9 @@ public class GameDriverPanel extends JPanel
 
             //---- handLabel ----
             handLabel.setText("Your Hand");
+            handLabel.setFont(handLabel.getFont().deriveFont(handLabel.getFont().getSize() + 2f));
             handPanel.add(handLabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
                 new Insets(0, 0, 5, 0), 0, 0));
 
             //---- handTable ----
@@ -118,39 +133,56 @@ public class GameDriverPanel extends JPanel
             knowledgeCardPanel.setBorder(new EtchedBorder());
             knowledgeCardPanel.setLayout(new GridBagLayout());
             ((GridBagLayout)knowledgeCardPanel.getLayout()).columnWidths = new int[] {65, 0, 0};
-            ((GridBagLayout)knowledgeCardPanel.getLayout()).rowHeights = new int[] {0, 0, 0, 0};
+            ((GridBagLayout)knowledgeCardPanel.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0};
             ((GridBagLayout)knowledgeCardPanel.getLayout()).columnWeights = new double[] {0.0, 1.0, 1.0E-4};
-            ((GridBagLayout)knowledgeCardPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
+            ((GridBagLayout)knowledgeCardPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0E-4};
+
+            //---- scorecardLabel ----
+            scorecardLabel.setText("Scorecard");
+            scorecardLabel.setFont(scorecardLabel.getFont().deriveFont(scorecardLabel.getFont().getSize() + 2f));
+            knowledgeCardPanel.add(scorecardLabel, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+                new Insets(0, 0, 5, 0), 0, 0));
 
             //---- peopleLabel ----
             peopleLabel.setText("People");
-            knowledgeCardPanel.add(peopleLabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+            knowledgeCardPanel.add(peopleLabel, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 5, 5), 0, 0));
-            knowledgeCardPanel.add(peopleTable, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+            knowledgeCardPanel.add(peopleTable, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 5, 0), 0, 0));
 
             //---- weaponsLabel ----
             weaponsLabel.setText("Weapons");
-            knowledgeCardPanel.add(weaponsLabel, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+            knowledgeCardPanel.add(weaponsLabel, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 5, 5), 0, 0));
-            knowledgeCardPanel.add(weaponsTable, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+            knowledgeCardPanel.add(weaponsTable, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 5, 0), 0, 0));
 
             //---- roomsLabel ----
             roomsLabel.setText("Rooms");
-            knowledgeCardPanel.add(roomsLabel, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+            knowledgeCardPanel.add(roomsLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(0, 0, 0, 5), 0, 0));
-            knowledgeCardPanel.add(roomsTable, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
+            knowledgeCardPanel.add(roomsTable, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 0, 0), 0, 0));
         }
         add(knowledgeCardPanel, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
+        add(separator, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
+
+        //---- inputLabel ----
+        inputLabel.setText("Input - User's Guess");
+        inputLabel.setFont(inputLabel.getFont().deriveFont(inputLabel.getFont().getSize() + 2f));
+        add(inputLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
             new Insets(0, 0, 5, 0), 0, 0));
 
         //======== inputPanel ========
@@ -162,29 +194,35 @@ public class GameDriverPanel extends JPanel
             {
                 guessPanel.setLayout(new GridBagLayout());
                 ((GridBagLayout)guessPanel.getLayout()).columnWidths = new int[] {0, 0};
-                ((GridBagLayout)guessPanel.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0};
+                ((GridBagLayout)guessPanel.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0};
                 ((GridBagLayout)guessPanel.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
-                ((GridBagLayout)guessPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout)guessPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
                 guessPanel.add(guessPersonComboBox, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
 
-                //---- label4 ----
-                label4.setText("text");
-                guessPanel.add(label4, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                //---- guessLabel1 ----
+                guessLabel1.setText("with the");
+                guessPanel.add(guessLabel1, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 5, 0), 0, 0));
                 guessPanel.add(guessWeaponComboBox, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
-                guessPanel.add(guessRoomComboBox, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+
+                //---- guessLabel2 ----
+                guessLabel2.setText("in the");
+                guessPanel.add(guessLabel2, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
+                    new Insets(0, 0, 5, 0), 0, 0));
+                guessPanel.add(guessRoomComboBox, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
 
                 //---- guessButton ----
                 guessButton.setText("Go");
                 guessButton.addActionListener(e -> guessButtonActionPerformed(e));
-                guessPanel.add(guessButton, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                guessPanel.add(guessButton, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 0, 0), 0, 0));
             }
@@ -194,60 +232,57 @@ public class GameDriverPanel extends JPanel
             {
                 showPanel.setLayout(new GridBagLayout());
                 ((GridBagLayout)showPanel.getLayout()).columnWidths = new int[] {0, 0};
-                ((GridBagLayout)showPanel.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                ((GridBagLayout)showPanel.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0};
                 ((GridBagLayout)showPanel.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
-                ((GridBagLayout)showPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
-
-                //---- label3 ----
-                label3.setText("Shown");
-                showPanel.add(label3, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 5, 0), 0, 0));
-                showPanel.add(guessPersonComboBox2, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                ((GridBagLayout)showPanel.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                showPanel.add(showComboBox1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
 
-                //---- label1 ----
-                label1.setText("showed");
-                showPanel.add(label1, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                //---- showLabel2 ----
+                showLabel2.setText("showed");
+                showPanel.add(showLabel2, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 5, 0), 0, 0));
-                showPanel.add(guessWeaponComboBox2, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+
+                //---- showComboBox2 ----
+                showComboBox2.setEnabled(false);
+                showPanel.add(showComboBox2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
 
-                //---- label2 ----
-                label2.setText("the card");
-                showPanel.add(label2, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                //---- showLabel3 ----
+                showLabel3.setText("the card");
+                showPanel.add(showLabel3, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 5, 0), 0, 0));
-                showPanel.add(guessRoomComboBox2, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
+
+                //---- showComboBox3 ----
+                showComboBox3.setModel(new DefaultComboBoxModel<>(new String[] {
+                    "< UNKNOWN >"
+                }));
+                showPanel.add(showComboBox3, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 5, 0), 0, 0));
 
                 //---- showButton ----
                 showButton.setText("Go");
-                showButton.addActionListener(e -> {
-			guessButtonActionPerformed(e);
-			showButtonActionPerformed(e);
-		});
-                showPanel.add(showButton, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
-                    new Insets(0, 0, 5, 0), 0, 0));
-                showPanel.add(separator1, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 5, 0), 0, 0));
-
-                //---- button1 ----
-                button1.setText("Next Player's Turn");
-                button1.addActionListener(e -> nextPlayerButtonActionPerformed(e));
-                showPanel.add(button1, new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0,
+                showButton.addActionListener(e -> showButtonActionPerformed(e));
+                showPanel.add(showButton, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 0, 0), 0, 0));
             }
             inputPanel.add(showPanel, "card2");
         }
-        add(inputPanel, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+        add(inputPanel, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
+
+        //---- nextPlayerButton ----
+        nextPlayerButton.setText("Next Player's Turn");
+        nextPlayerButton.setEnabled(false);
+        nextPlayerButton.addActionListener(e -> nextPlayerButtonActionPerformed(e));
+        add(nextPlayerButton, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 0, 0), 0, 0));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -258,6 +293,10 @@ public class GameDriverPanel extends JPanel
         peopleTable.updateUI();
         weaponsTable.updateUI();
         roomsTable.updateUI();
+
+        showComboBox1.setSelectedIndex(-1);
+        showComboBox2.setSelectedIndex(currentPlayer);
+        showComboBox3.setSelectedIndex(-1);
     }
 
     public void setHand(List<String> cards)
@@ -272,13 +311,47 @@ public class GameDriverPanel extends JPanel
     }
 
     private void guessButtonActionPerformed(ActionEvent e) {
-        System.out.println("Guess button pressed with values: ");
-        System.out.println(guessPersonComboBox.getSelectedItem());
-        System.out.println(guessWeaponComboBox.getSelectedItem());
-        System.out.println(guessRoomComboBox.getSelectedItem());
+        personGuess = guessPersonComboBox.getSelectedItem().toString();
+        weaponGuess = guessWeaponComboBox.getSelectedItem().toString();
+        roomGuess = guessRoomComboBox.getSelectedItem().toString();
 
-        //TODO display panel asking user for whether they were shown a card
-        //TODO
+        ((CardLayout)inputPanel.getLayout()).next(inputPanel);
+        nextPlayerButton.setEnabled(true);
+        inputLabel.setText("Input - " + players.get(currentPlayer).getName() + "'s Shown Cards");
+        refreshUi();
+    }
+
+    private void showButtonActionPerformed(ActionEvent e) {
+        if (showComboBox2.equals("User"))
+        {
+            resolutionFactory.add_and_resolve(showComboBox3.getSelectedItem().toString(),
+                    showComboBox1.getSelectedItem().toString());
+            scorecard.updateAllRows(resolutionFactory);
+        }
+        else
+        {
+            //showComboBox2.getSelectedItem().toString()  // the player the card is being shown to
+            //showComboBox1.getSelectedItem().toString()  // the player who has the card
+            //resolutionFactory.add_temp_and_resolve(playerS, playerA);
+            //scorecard.updateAllRows(resolutionFactory);
+        }
+
+        showComboBox1.setSelectedIndex(-1);
+        showComboBox3.setSelectedIndex(-1);
+        refreshUi();
+    }
+
+    private void nextPlayerButtonActionPerformed(ActionEvent e) {
+        personGuess = null;
+        weaponGuess = null;
+        roomGuess = null;
+
+        currentPlayer = (currentPlayer + 1) % players.size();
+
+        ((CardLayout)inputPanel.getLayout()).next(inputPanel);
+        nextPlayerButton.setEnabled(false);
+        inputLabel.setText("Input - " + players.get(currentPlayer).getName() + "'s Guess");
+        refreshUi();
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -286,28 +359,30 @@ public class GameDriverPanel extends JPanel
     private JLabel handLabel;
     private JTable handTable;
     private JPanel knowledgeCardPanel;
+    private JLabel scorecardLabel;
     private JLabel peopleLabel;
     private JTable peopleTable;
     private JLabel weaponsLabel;
     private JTable weaponsTable;
     private JLabel roomsLabel;
     private JTable roomsTable;
+    private JSeparator separator;
+    private JLabel inputLabel;
     private JPanel inputPanel;
     private JPanel guessPanel;
     private JComboBox guessPersonComboBox;
-    private JLabel label4;
+    private JLabel guessLabel1;
     private JComboBox guessWeaponComboBox;
+    private JLabel guessLabel2;
     private JComboBox guessRoomComboBox;
     private JButton guessButton;
     private JPanel showPanel;
-    private JLabel label3;
-    private JComboBox guessPersonComboBox2;
-    private JLabel label1;
-    private JComboBox guessWeaponComboBox2;
-    private JLabel label2;
-    private JComboBox guessRoomComboBox2;
+    private JComboBox showComboBox1;
+    private JLabel showLabel2;
+    private JComboBox showComboBox2;
+    private JLabel showLabel3;
+    private JComboBox<String> showComboBox3;
     private JButton showButton;
-    private JSeparator separator1;
-    private JButton button1;
+    private JButton nextPlayerButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

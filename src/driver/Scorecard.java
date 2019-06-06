@@ -17,6 +17,25 @@ public class Scorecard
         this.rooms = new ScorecardTableModel(rooms);
     }
 
+    public void updateAllRows(ResolutionFactory resolutionFactory)
+    {
+        for (int x = 0; x < people.getRowCount(); x++)
+        {
+            String person = people.getValueAt(x, 0).toString();
+            updateRow(person, resolutionFactory.getInfoForSymbol(person));
+        }
+        for (int x = 0; x < weapons.getRowCount(); x++)
+        {
+            String weapon = weapons.getValueAt(x, 0).toString();
+            updateRow(weapon, resolutionFactory.getInfoForSymbol(weapon));
+        }
+        for (int x = 0; x < rooms.getRowCount(); x++)
+        {
+            String room = rooms.getValueAt(x, 0).toString();
+            updateRow(room, resolutionFactory.getInfoForSymbol(room));
+        }
+    }
+
     public void updateRow(String rowKey, ResolutionFactory.Info newValue)
     {
         if (people.containsKey(rowKey)) people.put(rowKey, newValue);
