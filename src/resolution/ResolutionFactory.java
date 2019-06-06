@@ -53,7 +53,7 @@ public class ResolutionFactory {
       Instance instance = new Instance(card);
       LinkedList<Symbol> instanceList = new LinkedList<Symbol>();
       instanceList.add(instance);
-      Predicate shown = new Predicate("Shown", instanceList);
+      Predicate shown = new Predicate("ShownToMe", instanceList);
       LinkedList<Predicate> predicateList = new LinkedList<>();
       Rule shownRule = new Rule(predicateList);
       knowledgeBase.add(shownRule);
