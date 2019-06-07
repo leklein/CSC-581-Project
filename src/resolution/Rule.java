@@ -35,6 +35,7 @@ public class Rule {
          return false;
       }
       return (((Rule)other).predicates.equals(predicates) && 
-              ((Rule)other).atomic == atomic);
+              ((Rule)other).atomic == atomic &&
+              ((Rule)other).temporary == temporary);
    }
 }
