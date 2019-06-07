@@ -17,12 +17,9 @@ public class ResolutionFactory {
     }
    
     public List<List<Symbol>> getSymbolsFromPredicate(String predStr, boolean negated) {
-        //System.err.println("!!!" + predStr + " " + new Boolean(negated + "!!!"));
         List<List<Symbol>> symbols = new LinkedList<List<Symbol>>();
         for (Rule rule : knowledgeBase) {
             if (rule.atomic) {
-                //System.err.println(rule.predicates.get(0).name + " " + new Boolean(rule.predicates.get(0).negated));
-                //System.err.println(rule.predicates.get(0).name.equals(predStr) + " " + new Boolean(rule.predicates.get(0).negated == negated));
                 if (rule.predicates.get(0).name.equals(predStr) && rule.predicates.get(0).negated == negated) {
                     symbols.add(rule.predicates.get(0).symbols);
                 }
@@ -83,6 +80,7 @@ public class ResolutionFactory {
       knowledgeBase.add(shownRule);
       resolve();
       remove_temporary();
+      RuleParser.parse(knowledgeBase);
    }
    
    /*
@@ -177,12 +175,6 @@ public class ResolutionFactory {
                String res = replaceDict.get(rule.predicates.get(i).symbols.get(j).name);
                if (null == res) {
                   /* haven't seen this symbol defined before; add to dictionary */
-                  /*
-                  System.err.println(rule.predicates.get(i).name + " " + 
-                                     rule.predicates.get(i).negated + " " +
-                                     rule.predicates.get(i).symbols.get(j).name + " " +
-                                     pred_symbols.get(j).name);
-                                     */
                   replaceDict.put(rule.predicates.get(i).symbols.get(j).name, 
                                   pred_symbols.get(j).name);
                }
