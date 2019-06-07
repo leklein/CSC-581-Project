@@ -108,7 +108,12 @@ public class RuleParser {
                         List<Symbol> predVarsList = new LinkedList<Symbol>();
                         List<String> predVarsStringList = Arrays.asList(predVars);
                         for (String varString : predVarsStringList) {
-                            predVarsList.add(new Variable(varString));
+                            if (varString.charAt(0) == '_') {
+                               predVarsList.add(new Instance(varString));
+                            }
+                            else {
+                               predVarsList.add(new Variable(varString));
+                            }
                         }
 
                         if (foundFullPred) {
