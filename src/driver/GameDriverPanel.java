@@ -16,6 +16,7 @@ public class GameDriverPanel extends JPanel
     public static String panelId = "MainPanel";
 
     private List<Player> players;
+    private Player user;
     private int currentPlayer = 0;
     private ResolutionFactory resolutionFactory;
     private Scorecard scorecard;
@@ -29,8 +30,14 @@ public class GameDriverPanel extends JPanel
         initComponents();
 
         this.players = players;
+        this.user = players.get(0);
         this.resolutionFactory = new ResolutionFactory();
         this.scorecard = new Scorecard(people, weapons, rooms);
+
+        for (String card : user.getCards())
+        {
+            resolutionFactory.add_and_resolve(RuleParser.userFriendlyStringToFact(card), user.getName());
+        }
 
         peopleTable.setModel(scorecard.people);
         weaponsTable.setModel(scorecard.weapons);
@@ -336,11 +343,13 @@ public class GameDriverPanel extends JPanel
         }
         else
         {
-            //TODO
+            //TODO where do we pass in the cards that were guessed?
             //showComboBox2.getSelectedItem().toString()  // the player the card is being shown to
             //showComboBox1.getSelectedItem().toString()  // the player who has the card
-            //resolutionFactory.add_temp_and_resolve(playerS, playerA);
-            //scorecard.updateAllRows(resolutionFactory);
+            resolutionFactory.add_temp_and_resolve(
+                    RuleParser.userFriendlyStringToFact(showComboBox2.getSelectedItem().toString()),
+                    RuleParser.userFriendlyStringToFact(showComboBox1.getSelectedItem().toString()));
+            scorecard.updateAllRows(resolutionFactory);
         }
 
         showComboBox1.setSelectedIndex(-1);

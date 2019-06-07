@@ -22,18 +22,21 @@ public class Scorecard
     {
         for (int x = 0; x < people.getRowCount(); x++)
         {
-            String person = RuleParser.userFriendlyStringToFact(people.getValueAt(x, 0).toString());
-            updateRow(person, resolutionFactory.getInfoForSymbol(person));
+            String person = people.getValueAt(x, 0).toString();
+            String personFact = RuleParser.userFriendlyStringToFact(person);
+            updateRow(person, resolutionFactory.getInfoForSymbol(personFact));
         }
         for (int x = 0; x < weapons.getRowCount(); x++)
         {
-            String weapon = RuleParser.userFriendlyStringToFact(weapons.getValueAt(x, 0).toString());
-            updateRow(weapon, resolutionFactory.getInfoForSymbol(weapon));
+            String weapon = weapons.getValueAt(x, 0).toString();
+            String weaponFact = RuleParser.userFriendlyStringToFact(weapon);
+            updateRow(weapon, resolutionFactory.getInfoForSymbol(weaponFact));
         }
         for (int x = 0; x < rooms.getRowCount(); x++)
         {
-            String room = RuleParser.userFriendlyStringToFact(rooms.getValueAt(x, 0).toString());
-            updateRow(room, resolutionFactory.getInfoForSymbol(room));
+            String room = rooms.getValueAt(x, 0).toString();
+            String roomFact = RuleParser.userFriendlyStringToFact(room);
+            updateRow(room, resolutionFactory.getInfoForSymbol(roomFact));
         }
     }
 

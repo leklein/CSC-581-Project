@@ -46,6 +46,7 @@ public class ResolutionFactory {
         }
         return Info.UNKNOWN;
     }
+
    /*
     * Mark a card as shown in the list of rules and resolve
     */

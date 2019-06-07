@@ -17,7 +17,6 @@ import java.util.Random;
 
 public class GameDriver
 {
-    //TODO change to command line argument
     private static int playerCount = 4;
 
     private static GameDriverPanel gameDriverPanel;
@@ -37,7 +36,6 @@ public class GameDriver
         setup();
 
         List<Rule> facts = RuleParser.generateRules("files/facts.txt");
-        List<Rule> rules = RuleParser.generateRules("files/rules.txt");
 
         createInitialGameSetup(facts);
         createUi();
@@ -71,10 +69,6 @@ public class GameDriver
             else if (type.equals("Room")) rooms.add(value);
         }
 
-        murderPerson = "Mr. Green";
-        murderWeapon = "Knife";
-        murderRoom = "Conservatory";
-
         players = new ArrayList<>();
         for (int player = 0; player < playerCount; player++)
         {
@@ -98,6 +92,8 @@ public class GameDriver
         murderRoom = roomsSubdeck.get(randomGenerator.nextInt(roomsSubdeck.size()));
         roomsSubdeck.remove(murderRoom);
 
+        System.out.println("Answer: " + murderPerson + ", " + murderWeapon + ", " + murderRoom);
+
         deck.addAll(peopleSubdeck);
         deck.addAll(weaponsSubdeck);
         deck.addAll(roomsSubdeck);
@@ -109,6 +105,7 @@ public class GameDriver
             players.get(player).addCard(card);
             player = (player + 1) % playerCount;
         }
+
     }
 
     private static void createUi()
