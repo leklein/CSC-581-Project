@@ -13,9 +13,9 @@ public class RuleParser {
     {
         String[] splitFact = fact.split("_");
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < splitFact.length; i++)
+        for (int i = 1; i < splitFact.length; i++)
         {
-            if (i != 0) stringBuilder.append(" ");
+            if (i != 1) stringBuilder.append(" ");
             stringBuilder.append(splitFact[i].trim());
         }
 
