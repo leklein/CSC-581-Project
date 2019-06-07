@@ -99,7 +99,7 @@ public class RuleParser {
                             if (i == line.length() - 1) {
                                 predVars = line.substring(argsStart).split(",");
                             } else {
-                                predVars = line.substring(argsStart, i).split(",");
+                                predVars = line.substring(argsStart, i-1).split(",");
                             }
                             predStart = i + 2;
                             foundFullPred = true;
