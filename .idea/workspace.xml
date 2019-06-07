@@ -7,7 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1311ee06-0c7f-45eb-9ec2-88da956d52e7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/driver/GameDriverPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/GameDriverPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/driver/GameDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/GameDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolution/RuleParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolution/RuleParser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,20 +23,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameDriver.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameDriver.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/driver/GameDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
-              <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+            <state relative-caret-position="235">
+              <caret line="117" column="5" lean-forward="true" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameDriverPanel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameDriverPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="334" column="65" selection-start-line="334" selection-start-column="65" selection-end-line="334" selection-end-column="65" />
+            <state relative-caret-position="118">
+              <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
               <folding>
                 <element signature="e#14453#14454#0" expanded="true" />
                 <element signature="e#14514#14515#0" expanded="true" />
@@ -57,8 +59,8 @@
       <file leaf-file-name="RuleParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resolution/RuleParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="76" column="30" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
+            <state relative-caret-position="199">
+              <caret line="56" column="21" lean-forward="true" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
               <folding>
                 <element signature="e#2078#2084#0" expanded="true" />
                 <element signature="e#2379#2390#0" expanded="true" />
@@ -71,11 +73,22 @@
       <file leaf-file-name="ResolutionFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resolution/ResolutionFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="391" column="1" lean-forward="true" selection-start-line="391" selection-start-column="1" selection-end-line="391" selection-end-column="1" />
+            <state relative-caret-position="1054">
+              <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
               <folding>
                 <element signature="e#1960#1968#0" expanded="true" />
                 <element signature="e#2166#2177#0" expanded="true" />
+                <element signature="e#3957#3972#0" expanded="true" />
+                <element signature="e#4756#4765#0" expanded="true" />
+                <element signature="e#7277#7293#0" expanded="true" />
+                <element signature="e#8524#8532#0" expanded="true" />
+                <element signature="e#8970#8981#0" expanded="true" />
+                <element signature="e#10582#10593#0" expanded="true" />
+                <element signature="e#11172#11192#0" expanded="true" />
+                <element signature="e#12082#12097#0" expanded="true" />
+                <element signature="e#12313#12322#0" expanded="true" />
+                <element signature="e#13052#13061#0" expanded="true" />
+                <element signature="e#13422#13428#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,8 +97,8 @@
       <file leaf-file-name="Scorecard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/driver/Scorecard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+            <state relative-caret-position="17">
+              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -106,7 +119,6 @@
       <find>make guess</find>
       <find>nextplayerbutton</find>
       <find>nextplayerbuttonactionper</find>
-      <find>system</find>
       <find>players.get(currentPLayer)</find>
       <find>updateallrows</find>
       <find>800</find>
@@ -120,7 +132,15 @@
       <find>personGu</find>
       <find>remove_temporary</find>
       <find>ask</find>
+      <find>system.out.p</find>
+      <find>system</find>
+      <find>system.out.print</find>
+      <find>print</find>
+      <find>system.out</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\Users\lklein\Documents\School Files\CSC 581 - Knowledgebases\Project\Clue Solver\src</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -172,11 +192,11 @@
         <option value="$PROJECT_DIR$/src/driver/GuessDriverShownInputPanel.java" />
         <option value="$PROJECT_DIR$/src/driver/GameDriverPanel.jfd" />
         <option value="$PROJECT_DIR$/src/driver/Scorecard.java" />
-        <option value="$PROJECT_DIR$/src/driver/GameDriver.java" />
         <option value="$PROJECT_DIR$/src/resolution/Rule.java" />
         <option value="$PROJECT_DIR$/src/resolution/ResolutionFactory.java" />
-        <option value="$PROJECT_DIR$/src/resolution/RuleParser.java" />
         <option value="$PROJECT_DIR$/src/driver/GameDriverPanel.java" />
+        <option value="$PROJECT_DIR$/src/resolution/RuleParser.java" />
+        <option value="$PROJECT_DIR$/src/driver/GameDriver.java" />
       </list>
     </option>
   </component>
@@ -331,9 +351,9 @@
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Problems" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.14227086" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.40766075" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
@@ -404,12 +424,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/driver/Scorecard.java</url>
-          <line>22</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/driver/GameDriverPanel.java</url>
           <line>63</line>
@@ -530,6 +544,17 @@
           <folding>
             <element signature="e#1960#1968#0" expanded="true" />
             <element signature="e#2166#2177#0" expanded="true" />
+            <element signature="e#3957#3972#0" expanded="true" />
+            <element signature="e#4756#4765#0" expanded="true" />
+            <element signature="e#7277#7293#0" expanded="true" />
+            <element signature="e#8524#8532#0" expanded="true" />
+            <element signature="e#8970#8981#0" expanded="true" />
+            <element signature="e#10582#10593#0" expanded="true" />
+            <element signature="e#11172#11192#0" expanded="true" />
+            <element signature="e#12082#12097#0" expanded="true" />
+            <element signature="e#12313#12322#0" expanded="true" />
+            <element signature="e#13052#13061#0" expanded="true" />
+            <element signature="e#13422#13428#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,6 +646,17 @@
           <folding>
             <element signature="e#1960#1968#0" expanded="true" />
             <element signature="e#2166#2177#0" expanded="true" />
+            <element signature="e#3957#3972#0" expanded="true" />
+            <element signature="e#4756#4765#0" expanded="true" />
+            <element signature="e#7277#7293#0" expanded="true" />
+            <element signature="e#8524#8532#0" expanded="true" />
+            <element signature="e#8970#8981#0" expanded="true" />
+            <element signature="e#10582#10593#0" expanded="true" />
+            <element signature="e#11172#11192#0" expanded="true" />
+            <element signature="e#12082#12097#0" expanded="true" />
+            <element signature="e#12313#12322#0" expanded="true" />
+            <element signature="e#13052#13061#0" expanded="true" />
+            <element signature="e#13422#13428#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -726,20 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/driver/Scorecard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/driver/GameDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resolution/Rule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -747,21 +769,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding>
+            <element signature="e#14453#14454#0" expanded="true" />
+            <element signature="e#14514#14515#0" expanded="true" />
+            <marker date="1559939911000" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+            <marker date="1559939911000" expanded="false" signature="17332:18472" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/resolution/ResolutionFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="391" column="1" lean-forward="true" selection-start-line="391" selection-start-column="1" selection-end-line="391" selection-end-column="1" />
+        <state relative-caret-position="1054">
+          <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
           <folding>
             <element signature="e#1960#1968#0" expanded="true" />
             <element signature="e#2166#2177#0" expanded="true" />
+            <element signature="e#3957#3972#0" expanded="true" />
+            <element signature="e#4756#4765#0" expanded="true" />
+            <element signature="e#7277#7293#0" expanded="true" />
+            <element signature="e#8524#8532#0" expanded="true" />
+            <element signature="e#8970#8981#0" expanded="true" />
+            <element signature="e#10582#10593#0" expanded="true" />
+            <element signature="e#11172#11192#0" expanded="true" />
+            <element signature="e#12082#12097#0" expanded="true" />
+            <element signature="e#12313#12322#0" expanded="true" />
+            <element signature="e#13052#13061#0" expanded="true" />
+            <element signature="e#13422#13428#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resolution/RuleParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="76" column="30" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
+        <state relative-caret-position="199">
+          <caret line="56" column="21" lean-forward="true" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
           <folding>
             <element signature="e#2078#2084#0" expanded="true" />
             <element signature="e#2379#2390#0" expanded="true" />
@@ -770,16 +816,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/driver/Scorecard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="334" column="65" selection-start-line="334" selection-start-column="65" selection-end-line="334" selection-end-column="65" />
-          <folding>
-            <element signature="e#14453#14454#0" expanded="true" />
-            <element signature="e#14514#14515#0" expanded="true" />
-            <marker date="1559939911000" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1559939911000" expanded="false" signature="17332:18472" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/driver/GameDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="117" column="5" lean-forward="true" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
         </state>
       </provider>
     </entry>

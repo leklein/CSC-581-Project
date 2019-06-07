@@ -41,28 +41,26 @@ public class RuleParser {
 
     public static void parse(List<Rule> rules) {
 
-        System.out.println("Number of rules found: " + rules.size());
-
         for (Rule rule : rules) {
             for (int i = 0; i < rule.predicates.size(); i++) {
                 Predicate pred = rule.predicates.get(i);
                 if (!pred.negated) {
-                   System.out.print(pred.name + ":");
+                   //System.out.print(pred.name + ":");
                 }
                 else {
-                  System.out.print("!" + pred.name + ":");
+                  //System.out.print("!" + pred.name + ":");
                 }
                 for (int j = 0; j < pred.symbols.size(); j++) {
-                    System.out.print(pred.symbols.get(j).name);
+                    //System.out.print(pred.symbols.get(j).name);
                     if (j != pred.symbols.size() - 1) {
-                        System.out.print(",");
+                        //System.out.print(",");
                     }
                 }
                 if (i != rule.predicates.size() - 1) {
-                    System.out.print(" | ");
+                    //System.out.print(" | ");
                 }
             }
-            System.out.println();
+            //System.out.println();
         }
     }
 

@@ -106,6 +106,15 @@ public class GameDriver
             player = (player + 1) % playerCount;
         }
 
+        System.out.println("\nPlayer 2 Cards: ");
+        for (String card : players.get(1).getCards()) System.out.println(card);
+
+        System.out.println("\nPlayer 3 Cards: ");
+        for (String card : players.get(2).getCards()) System.out.println(card);
+
+        System.out.println("\nPlayer 4 Cards: ");
+        for (String card : players.get(3).getCards()) System.out.println(card);
+
     }
 
     private static void createUi()
