@@ -66,22 +66,35 @@ public class ResolutionFactory {
    }
 
    /*
-    * Mark that playerS showed playerA a card, resolve, then remove temporary rules
+    * add temporary rules
     */
-   public void add_temp_and_resolve(String playerS, String playerA) {
-      Instance instanceA = new Instance(playerA);
-      Instance instanceP = new Instance(playerS);
-      LinkedList<Symbol> instanceList = new LinkedList<Symbol>();
-      instanceList.add(instanceP);
-      instanceList.add(instanceA);
-      Predicate shown = new Predicate("Shown", instanceList);
-      LinkedList<Predicate> predicateList = new LinkedList<>();
-      predicateList.add(shown);
-      Rule shownRule = new Rule(predicateList, true);
-      knowledgeBase.add(shownRule);
+   public void add_temp_and_resolve(String predName, List<String> symbolNames) {
+      List<Symbol> symbols = new LinkedList<Symbol>();
+      for (String name : symbolNames) {
+         symbols.add(new Instance(name));
+      }
+      Predicate predicate = new Predicate(predName, symbolNames, false);
+      List<Predicate> preds = new LinkedList<Predicate>();
+      preds.add(predicate);
+      Rule tempRule = new Rule(preds, true);
+      knowledgeBase.add(tempRule);
       resolve();
-      remove_temporary();
       RuleParser.parse(knowledgeBase);
+   }
+
+   /*
+    * Removes temporary variables from the knowledgebase
+    */
+   public void remove_temporary() {
+      int i = 0;
+      while (i < knowledgeBase.size()) {
+         if (knowledgeBase.get(i).temporary) {
+            knowledgeBase.remove(i);
+         }
+         else {
+            i += 1;
+         }
+      }
    }
    
    /*
@@ -376,18 +389,4 @@ public class ResolutionFactory {
       }
    }
 
-   /*
-    * Removes temporary variables from the knowledgebase
-    */
-   private void remove_temporary() {
-      int i = 0;
-      while (i < knowledgeBase.size()) {
-         if (knowledgeBase.get(i).temporary) {
-            knowledgeBase.remove(i);
-         }
-         else {
-            i += 1;
-         }
-      }
-   }
 }
