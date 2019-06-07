@@ -76,10 +76,9 @@ public class GameDriver
         murderRoom = "Conservatory";
 
         players = new ArrayList<>();
-        players.add(new Player("User"));
-        for (int player = 1; player < playerCount; player++)
+        for (int player = 0; player < playerCount; player++)
         {
-            players.add(new Player("Player " + (player + 1)));
+            players.add(new Player("_" + (player + 1)));
         }
 
         List<String> deck = new ArrayList<>();

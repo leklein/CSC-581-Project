@@ -49,8 +49,8 @@ public class GameDriverPanel extends JPanel
             showComboBox3.addItem(room);
         }
         for (Player player : players) {
-            showComboBox1.addItem(player.getName());
-            showComboBox2.addItem(player.getName());
+            showComboBox1.addItem("Player" + player.getName());
+            showComboBox2.addItem("Player" + player.getName());
         }
     }
 
@@ -181,7 +181,7 @@ public class GameDriverPanel extends JPanel
             new Insets(0, 0, 5, 0), 0, 0));
 
         //---- inputLabel ----
-        inputLabel.setText("Input - User's Guess");
+        inputLabel.setText("Input - Player_1's Guess");
         inputLabel.setFont(inputLabel.getFont().deriveFont(inputLabel.getFont().getSize() + 2f));
         add(inputLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.VERTICAL,
@@ -322,12 +322,12 @@ public class GameDriverPanel extends JPanel
 
         ((CardLayout)inputPanel.getLayout()).next(inputPanel);
         nextPlayerButton.setEnabled(true);
-        inputLabel.setText("Input - " + players.get(currentPlayer).getName() + "'s Shown Cards");
+        inputLabel.setText("Input - Player" + players.get(currentPlayer).getName() + "'s Shown Cards");
         refreshUi();
     }
 
     private void showButtonActionPerformed(ActionEvent e) {
-        if (showComboBox2.getSelectedItem().equals("User"))
+        if (showComboBox2.getSelectedItem().equals("Player_1"))
         {
             resolutionFactory.add_and_resolve(
                     RuleParser.userFriendlyStringToFact(showComboBox3.getSelectedItem().toString()),
@@ -336,6 +336,7 @@ public class GameDriverPanel extends JPanel
         }
         else
         {
+            //TODO
             //showComboBox2.getSelectedItem().toString()  // the player the card is being shown to
             //showComboBox1.getSelectedItem().toString()  // the player who has the card
             //resolutionFactory.add_temp_and_resolve(playerS, playerA);
@@ -356,7 +357,7 @@ public class GameDriverPanel extends JPanel
 
         ((CardLayout)inputPanel.getLayout()).next(inputPanel);
         nextPlayerButton.setEnabled(false);
-        inputLabel.setText("Input - " + players.get(currentPlayer).getName() + "'s Guess");
+        inputLabel.setText("Input - Player" + players.get(currentPlayer).getName() + "'s Guess");
         refreshUi();
     }
 
