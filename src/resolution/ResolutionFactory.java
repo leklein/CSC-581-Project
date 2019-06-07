@@ -19,7 +19,7 @@ public class ResolutionFactory {
     public List<List<Symbol>> getSymbolsFromPredicate(String predStr, boolean negated) {
         List<List<Symbol>> symbols = new LinkedList<List<Symbol>>();
         for (Rule rule : knowledgeBase) {
-            if (rule.atomic) {
+            if (rule.predicates.size() == 1) {
                 if (rule.predicates.get(0).name.equals(predStr) && rule.predicates.get(0).negated == negated) {
                     symbols.add(rule.predicates.get(0).symbols);
                 }
@@ -100,6 +100,19 @@ public class ResolutionFactory {
       while (0 < workspace.size() && resolved) {
          resolved = resolve_inner(workspace);
       }
+
+      /* purge duplicates */
+      Hashtable<Rule, Boolean> duplicates = new Hashtable<Rule, Boolean>();
+      int i = 0;
+      while (i < workspace.size()) {
+         if (null == duplicates.get(workspace.get(i))) {
+            duplicates.put(workspace.get(i), true);
+            i += 1;
+         }
+         else {
+            knowledgeBase.remove(i);
+         }
+      }
    }
 
 
@@ -120,16 +133,34 @@ public class ResolutionFactory {
       for (int i = 0; i < workspace.size(); i++) {
          Rule rule = workspace.get(i);
 
-         List<List<List<Symbol>>> all_preds = collect_satisfying_symbols(rule);
-         if (null != all_preds) {
-            /* create all permutations of possible matchings */
-            List<List<Integer>> tuples = create_permutations(new LinkedList<List<List<Symbol>>>(all_preds));
+         /* check to see if the rule has no variables (checks for solution) */
+         boolean noVars = true;
+         for (Predicate predicate : rule.predicates) {
+            for (Symbol symbol : predicate.symbols) {
+               if (symbol instanceof Variable) {
+                  noVars = false;
+                  break;
+               }
+            }
+         }
 
-            resolve_all_possible(rule, all_preds, tuples);
-            
-            /* Mark rule for cleanup */
+         /* attempt to resolve solution */
+         if (noVars && resolve_solution(rule)) {
             cleanup.add(i);
             resolved = true;
+         }
+         else if (!noVars) {
+            List<List<List<Symbol>>> all_preds = collect_satisfying_symbols(rule);
+            if (null != all_preds) {
+               /* create all permutations of possible matchings */
+               List<List<Integer>> tuples = create_permutations(new LinkedList<List<List<Symbol>>>(all_preds));
+
+               resolve_all_possible(rule, all_preds, tuples);
+               
+               /* Mark rule for cleanup */
+               cleanup.add(i);
+               resolved = true;
+            }
          }
       }
 
@@ -187,12 +218,6 @@ public class ResolutionFactory {
          }
       }
 
-      if (noVars) {
-         /* this rule is looking for a solution and must be handled specially */
-         resolve_solution(rule, all_preds, tuple);
-         return;
-      }
-
       /* 
        * No contradiction has been found, so tuple produces valid interpretation
        * Add right side of implication to rules
@@ -207,7 +232,7 @@ public class ResolutionFactory {
       Predicate predicate = new Predicate(rhs.name, symbols, rhs.negated);
       List<Predicate> wrapper = new LinkedList<Predicate>();
       wrapper.add(predicate);
-      Rule newrule = new Rule(wrapper);
+      Rule newrule = new Rule(wrapper,rule.temporary);
       if (!knowledgeBase.contains(newrule)) {
          knowledgeBase.add(newrule);
       }
@@ -216,37 +241,25 @@ public class ResolutionFactory {
    /*
     * attempts to determine a murderer, weapon, or location
     */
-   private void resolve_solution(Rule rule,
-                                 List<List<List<Symbol>>> all_preds,
-                                 List<Integer> tuple) {
-      /* prevent redundant work */
-      if (0 != getSymbolsFromPredicate(rule.predicates.get(0).name, false).size()) {
-         /* we have already found the answer this rule is looking for */
-         return;
-      }
+   private boolean resolve_solution(Rule rule) {
+      List<List<Symbol>> ansSymbols = getSymbolsFromPredicate(rule.predicates.get(0).name, true);
 
-      /* seen[i] is true when predicate[i] has been satisfied by a value in the tuple */
+      /* count how many seen */
+      /* seen[i] = true if a rule cancels out predicate i */
       boolean[] seen = new boolean[rule.predicates.size()];
-
-      /* all_preds will be filled with copies of same Predicate, so proceed WLOG */
-      List<List<Symbol>> ansSymbols = all_preds.get(0); 
       for (int i = 0; i < ansSymbols.size(); i++) {
          Symbol symbol = ansSymbols.get(i).get(0); /* these predicates have only one symbol */
          /* See if matches any predicates in the rule */
          for (int j = 0; j < rule.predicates.size(); j++) {
             if (rule.predicates.get(j).symbols.get(0).name.equals(symbol.name)) {
-               if (seen[j]) {
-                  /* something went wrong */
-                  return;
-               }
                /* found a match; mark as seen */
-               seen[j] = true;
+               seen[i] = true;
                break;
             }
          }
       }
 
-      /* count how many seen */
+      /* count how many seen and find the last one that was not seen */
       int sum = 0;
       int lastFalse = -1;
       for (int i = 0; i < seen.length; i++) {
@@ -257,21 +270,24 @@ public class ResolutionFactory {
             lastFalse = i;
          }
       }
-      
+
       /* 
        * if we have seen all but one predicates, we found our answer;
        * add answer to pool
        */
 
       if (rule.predicates.size() - 1 != sum) {
-         return;
+         return false;
       }
 
       /* found the answer */
       List<Predicate> answerList = new LinkedList<Predicate>();
       answerList.add(rule.predicates.get(lastFalse));
       Rule ansRule = new Rule(answerList);
-      knowledgeBase.add(ansRule);
+      if (!knowledgeBase.contains(ansRule)) {
+         knowledgeBase.add(ansRule);
+      }
+      return true;
    }
 
    /*
