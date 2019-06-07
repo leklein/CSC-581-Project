@@ -7,8 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1311ee06-0c7f-45eb-9ec2-88da956d52e7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/driver/GameDriverPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/GameDriverPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolution/RuleParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolution/RuleParser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,16 +30,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameDriverPanel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameDriverPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="349" column="12" selection-start-line="349" selection-start-column="12" selection-end-line="349" selection-end-column="12" />
+            <state relative-caret-position="167">
+              <caret line="357" column="49" lean-forward="true" selection-start-line="357" selection-start-column="49" selection-end-line="357" selection-end-column="49" />
               <folding>
                 <element signature="e#14453#14454#0" expanded="true" />
                 <element signature="e#14514#14515#0" expanded="true" />
-                <marker date="1559937735318" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-                <marker date="1559937735318" expanded="false" signature="17233:18373" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+                <marker date="1559937740470" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+                <marker date="1559937740470" expanded="false" signature="17221:18361" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
               </folding>
             </state>
           </provider>
@@ -55,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RuleParser.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RuleParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resolution/RuleParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="136" column="5" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
+            <state relative-caret-position="230">
+              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
               <folding>
                 <element signature="e#2078#2084#0" expanded="true" />
                 <element signature="e#2379#2390#0" expanded="true" />
@@ -172,11 +171,11 @@
         <option value="$PROJECT_DIR$/src/driver/GuessDriverShownInputPanel.java" />
         <option value="$PROJECT_DIR$/src/driver/GameDriverPanel.jfd" />
         <option value="$PROJECT_DIR$/src/driver/Scorecard.java" />
-        <option value="$PROJECT_DIR$/src/resolution/RuleParser.java" />
         <option value="$PROJECT_DIR$/src/driver/GameDriver.java" />
         <option value="$PROJECT_DIR$/src/resolution/Rule.java" />
         <option value="$PROJECT_DIR$/src/resolution/ResolutionFactory.java" />
         <option value="$PROJECT_DIR$/src/driver/GameDriverPanel.java" />
+        <option value="$PROJECT_DIR$/src/resolution/RuleParser.java" />
       </list>
     </option>
   </component>
@@ -326,7 +325,7 @@
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" sideWeight="0.50065106" side_tool="true" weight="0.36662108" />
       <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49934897" weight="0.40492475" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49934897" visible="true" weight="0.40492475" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
@@ -510,8 +509,8 @@
           <folding>
             <element signature="e#14453#14454#0" expanded="true" />
             <element signature="e#14514#14515#0" expanded="true" />
-            <marker date="1559937735318" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1559937735318" expanded="false" signature="17233:18373" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+            <marker date="1559937740470" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+            <marker date="1559937740470" expanded="false" signature="17221:18361" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
           </folding>
         </state>
       </provider>
@@ -649,8 +648,8 @@
           <folding>
             <element signature="e#14453#14454#0" expanded="true" />
             <element signature="e#14514#14515#0" expanded="true" />
-            <marker date="1559937735318" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1559937735318" expanded="false" signature="17233:18373" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+            <marker date="1559937740470" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+            <marker date="1559937740470" expanded="false" signature="17221:18361" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
           </folding>
         </state>
       </provider>
@@ -726,18 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolution/RuleParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="136" column="5" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
-          <folding>
-            <element signature="e#2078#2084#0" expanded="true" />
-            <element signature="e#2379#2390#0" expanded="true" />
-            <element signature="e#3666#3674#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/driver/Scorecard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -772,13 +759,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="349" column="12" selection-start-line="349" selection-start-column="12" selection-end-line="349" selection-end-column="12" />
+        <state relative-caret-position="167">
+          <caret line="357" column="49" lean-forward="true" selection-start-line="357" selection-start-column="49" selection-end-line="357" selection-end-column="49" />
           <folding>
             <element signature="e#14453#14454#0" expanded="true" />
             <element signature="e#14514#14515#0" expanded="true" />
-            <marker date="1559937735318" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1559937735318" expanded="false" signature="17233:18373" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+            <marker date="1559937740470" expanded="false" signature="1947:14065" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+            <marker date="1559937740470" expanded="false" signature="17221:18361" ph="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resolution/RuleParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding>
+            <element signature="e#2078#2084#0" expanded="true" />
+            <element signature="e#2379#2390#0" expanded="true" />
+            <element signature="e#3666#3674#0" expanded="true" />
           </folding>
         </state>
       </provider>
