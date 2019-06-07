@@ -330,9 +330,9 @@ public class GameDriverPanel extends JPanel
 
         List<String> guesses = new ArrayList<>();
         guesses.add(players.get(currentPlayer).getName());
-        guesses.add(personGuess);
-        guesses.add(weaponGuess);
-        guesses.add(roomGuess);
+        guesses.add(RuleParser.userFriendlyStringToFact(personGuess));
+        guesses.add(RuleParser.userFriendlyStringToFact(weaponGuess));
+        guesses.add(RuleParser.userFriendlyStringToFact(roomGuess));
         resolutionFactory.add_temp_and_resolve("Ask", guesses);
 
         ((CardLayout)inputPanel.getLayout()).next(inputPanel);

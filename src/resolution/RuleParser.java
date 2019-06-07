@@ -28,7 +28,7 @@ public class RuleParser {
         {
             return userFriendlyString.substring(userFriendlyString.indexOf("_"));
         }
-        
+
         String[] splitUserFriendlyString = userFriendlyString.split(" ");
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < splitUserFriendlyString.length; i++)
