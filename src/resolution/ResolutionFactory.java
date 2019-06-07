@@ -73,7 +73,7 @@ public class ResolutionFactory {
       for (String name : symbolNames) {
          symbols.add(new Instance(name));
       }
-      Predicate predicate = new Predicate(predName, symbolNames, false);
+      Predicate predicate = new Predicate(predName, symbols, false);
       List<Predicate> preds = new LinkedList<Predicate>();
       preds.add(predicate);
       Rule tempRule = new Rule(preds, true);
