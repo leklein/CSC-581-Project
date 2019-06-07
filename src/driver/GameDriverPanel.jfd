@@ -136,7 +136,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "inputLabel"
-				"text": "Input - User's Guess"
+				"text": "Input - Player_1's Guess"
 				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridy": 3
