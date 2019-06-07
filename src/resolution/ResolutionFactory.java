@@ -62,6 +62,7 @@ public class ResolutionFactory {
       Rule shownRule = new Rule(predicateList);
       knowledgeBase.add(shownRule);
       resolve();
+      resolve();
       RuleParser.parse(knowledgeBase);
    }
 
@@ -78,6 +79,7 @@ public class ResolutionFactory {
       preds.add(predicate);
       Rule tempRule = new Rule(preds, true);
       knowledgeBase.add(tempRule);
+      resolve();
       resolve();
       RuleParser.parse(knowledgeBase);
    }
