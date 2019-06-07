@@ -8,8 +8,8 @@ public class ResolutionFactory {
     List<Rule> knowledgeBase;
 
     public ResolutionFactory() {
-        knowledgeBase = new RuleParser().generateRules("files/facts.txt");
-        knowledgeBase.addAll(new RuleParser().generateRules("files/rules.txt"));
+        knowledgeBase = RuleParser.generateRules("files/facts.txt");
+        knowledgeBase.addAll(RuleParser.generateRules("files/rules.txt"));
     }
 
     public enum Info {
