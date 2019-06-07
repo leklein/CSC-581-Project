@@ -24,7 +24,6 @@ public class ResolutionFactory {
                 //System.err.println(rule.predicates.get(0).name + " " + new Boolean(rule.predicates.get(0).negated));
                 //System.err.println(rule.predicates.get(0).name.equals(predStr) + " " + new Boolean(rule.predicates.get(0).negated == negated));
                 if (rule.predicates.get(0).name.equals(predStr) && rule.predicates.get(0).negated == negated) {
-                    //System.err.println("blah");
                     symbols.add(rule.predicates.get(0).symbols);
                 }
             }
@@ -163,6 +162,8 @@ public class ResolutionFactory {
    private void resolve_one_possible(Rule rule,
                                      List<List<List<Symbol>>> all_preds,
                                      List<Integer> tuple) {
+      /* Used to detect rules where no substitution needed */
+      boolean noVars = true;
       /* Used to check for conflicting definitions of variables */
       Hashtable<String, String> replaceDict = new Hashtable<String, String>();
       /* For each element of the tuple, do: */
@@ -171,17 +172,32 @@ public class ResolutionFactory {
          List<Symbol> pred_symbols = all_preds.get(i).get(tuple.get(i));
          /* Check if the tuple satisfies the rule */
          for (int j = 0; j < pred_symbols.size(); j++) {
-            String res = replaceDict.get(rule.predicates.get(i).symbols.get(j).name);
-            if (null == res) {
-               /* haven't seen this symbol defined before; add to dictionary */
-               replaceDict.put(rule.predicates.get(i).symbols.get(j).name, 
-                               pred_symbols.get(j).name);
-            }
-            else if (!pred_symbols.get(j).equals(res)) {
-               /* Contradicts previous information, so this tuple won't work */
-               return;
+            if (rule.predicates.get(i).symbols.get(j) instanceof Variable) {
+               noVars = false;
+               String res = replaceDict.get(rule.predicates.get(i).symbols.get(j).name);
+               if (null == res) {
+                  /* haven't seen this symbol defined before; add to dictionary */
+                  /*
+                  System.err.println(rule.predicates.get(i).name + " " + 
+                                     rule.predicates.get(i).negated + " " +
+                                     rule.predicates.get(i).symbols.get(j).name + " " +
+                                     pred_symbols.get(j).name);
+                                     */
+                  replaceDict.put(rule.predicates.get(i).symbols.get(j).name, 
+                                  pred_symbols.get(j).name);
+               }
+               else if (!pred_symbols.get(j).name.equals(res)) {
+                  /* Contradicts previous information, so this tuple won't work */
+                  return;
+               }
             }
          }
+      }
+
+      if (noVars) {
+         /* this rule is looking for a solution and must be handled specially */
+         resolve_solution(rule, all_preds, tuple);
+         return;
       }
 
       /* 
@@ -195,13 +211,74 @@ public class ResolutionFactory {
          symbols.add(new Instance(replaceDict.get(symbol.name)));
       }
       /* Make an atomic rule and add to the knowledgebase */
-      Predicate predicate = new Predicate(rhs.name, symbols);
+      Predicate predicate = new Predicate(rhs.name, symbols, rhs.negated);
       List<Predicate> wrapper = new LinkedList<Predicate>();
       wrapper.add(predicate);
       Rule newrule = new Rule(wrapper);
       if (!knowledgeBase.contains(newrule)) {
          knowledgeBase.add(newrule);
       }
+   }
+
+   /*
+    * attempts to determine a murderer, weapon, or location
+    */
+   private void resolve_solution(Rule rule,
+                                 List<List<List<Symbol>>> all_preds,
+                                 List<Integer> tuple) {
+      /* prevent redundant work */
+      if (0 != getSymbolsFromPredicate(rule.predicates.get(0).name, false).size()) {
+         /* we have already found the answer this rule is looking for */
+         return;
+      }
+
+      /* seen[i] is true when predicate[i] has been satisfied by a value in the tuple */
+      boolean[] seen = new boolean[rule.predicates.size()];
+
+      /* all_preds will be filled with copies of same Predicate, so proceed WLOG */
+      List<List<Symbol>> ansSymbols = all_preds.get(0); 
+      for (int i = 0; i < ansSymbols.size(); i++) {
+         Symbol symbol = ansSymbols.get(i).get(0); /* these predicates have only one symbol */
+         /* See if matches any predicates in the rule */
+         for (int j = 0; j < rule.predicates.size(); j++) {
+            if (rule.predicates.get(j).symbols.get(0).name.equals(symbol.name)) {
+               if (seen[j]) {
+                  /* something went wrong */
+                  return;
+               }
+               /* found a match; mark as seen */
+               seen[j] = true;
+               break;
+            }
+         }
+      }
+
+      /* count how many seen */
+      int sum = 0;
+      int lastFalse = -1;
+      for (int i = 0; i < seen.length; i++) {
+         if (seen[i]) {
+            sum += 1;
+         }
+         else {
+            lastFalse = i;
+         }
+      }
+      
+      /* 
+       * if we have seen all but one predicates, we found our answer;
+       * add answer to pool
+       */
+
+      if (rule.predicates.size() - 1 != sum) {
+         return;
+      }
+
+      /* found the answer */
+      List<Predicate> answerList = new LinkedList<Predicate>();
+      answerList.add(rule.predicates.get(lastFalse));
+      Rule ansRule = new Rule(answerList);
+      knowledgeBase.add(ansRule);
    }
 
    /*
