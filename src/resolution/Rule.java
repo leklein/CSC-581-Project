@@ -9,7 +9,7 @@ public class Rule {
    
    public Rule(List<Predicate> predicates) {
       this.predicates = predicates;
-      if (1 >= predicates.size()) {
+      if (1 == predicates.size()) {
          this.atomic = true;
       }
       else {

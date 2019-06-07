@@ -17,10 +17,14 @@ public class ResolutionFactory {
     }
    
     public List<List<Symbol>> getSymbolsFromPredicate(String predStr, boolean negated) {
+        //System.err.println("!!!" + predStr + " " + new Boolean(negated + "!!!"));
         List<List<Symbol>> symbols = new LinkedList<List<Symbol>>();
         for (Rule rule : knowledgeBase) {
-            if (rule.predicates.size() == 1) {
+            if (rule.atomic) {
+                //System.err.println(rule.predicates.get(0).name + " " + new Boolean(rule.predicates.get(0).negated));
+                //System.err.println(rule.predicates.get(0).name.equals(predStr) + " " + new Boolean(rule.predicates.get(0).negated == negated));
                 if (rule.predicates.get(0).name.equals(predStr) && rule.predicates.get(0).negated == negated) {
+                    //System.err.println("blah");
                     symbols.add(rule.predicates.get(0).symbols);
                 }
             }
@@ -61,6 +65,7 @@ public class ResolutionFactory {
       Rule shownRule = new Rule(predicateList);
       knowledgeBase.add(shownRule);
       resolve();
+      RuleParser.parse(knowledgeBase);
    }
 
    /*
@@ -166,10 +171,11 @@ public class ResolutionFactory {
          List<Symbol> pred_symbols = all_preds.get(i).get(tuple.get(i));
          /* Check if the tuple satisfies the rule */
          for (int j = 0; j < pred_symbols.size(); j++) {
-            String res = replaceDict.get(rule.predicates.get(i).symbols.get(i).name);
+            String res = replaceDict.get(rule.predicates.get(i).symbols.get(j).name);
             if (null == res) {
                /* haven't seen this symbol defined before; add to dictionary */
-               replaceDict.put(res, pred_symbols.get(j).name);
+               replaceDict.put(rule.predicates.get(i).symbols.get(j).name, 
+                               pred_symbols.get(j).name);
             }
             else if (!pred_symbols.get(j).equals(res)) {
                /* Contradicts previous information, so this tuple won't work */
@@ -279,8 +285,8 @@ public class ResolutionFactory {
     *           be removed
     */
    private void cleanup_workspace(List<Rule> workspace, List<Integer> cleanup) {
-      for (Integer i : cleanup) {
-         workspace.remove(i);
+      for (int i = cleanup.size() - 1; i >= 0; i--) {
+         workspace.remove(cleanup.get(i).intValue());
       }
    }
 
