@@ -296,6 +296,9 @@ public class GameDriverPanel extends JPanel
         weaponsTable.updateUI();
         roomsTable.updateUI();
 
+        guessPersonComboBox.setSelectedIndex(-1);
+        guessRoomComboBox.setSelectedIndex(-1);
+        guessWeaponComboBox.setSelectedIndex(-1);
         showComboBox1.setSelectedIndex(-1);
         showComboBox2.setSelectedIndex(currentPlayer);
         showComboBox3.setSelectedIndex(-1);

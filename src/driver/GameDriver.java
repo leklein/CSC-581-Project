@@ -7,6 +7,8 @@ import resolution.RuleParser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.util.ArrayList;
@@ -32,11 +34,23 @@ public class GameDriver
 
     public static void main(String[] args)
     {
+        setup();
+
         List<Rule> facts = RuleParser.generateRules("files/facts.txt");
         List<Rule> rules = RuleParser.generateRules("files/rules.txt");
 
         createInitialGameSetup(facts);
         createUi();
+    }
+
+    private static void setup()
+    {
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        }
+        catch (Exception e) {
+            System.out.println("Error setting the Look and Feel.");
+        }
     }
 
     private static void createInitialGameSetup(List<Rule> facts)
