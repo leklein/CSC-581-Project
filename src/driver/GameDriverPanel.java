@@ -6,6 +6,7 @@ import resolution.RuleParser;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -327,6 +328,13 @@ public class GameDriverPanel extends JPanel
         weaponGuess = guessWeaponComboBox.getSelectedItem().toString();
         roomGuess = guessRoomComboBox.getSelectedItem().toString();
 
+        List<String> guesses = new ArrayList<>();
+        guesses.add(players.get(currentPlayer).getName());
+        guesses.add(personGuess);
+        guesses.add(weaponGuess);
+        guesses.add(roomGuess);
+        resolutionFactory.add_temp_and_resolve("Ask", guesses);
+
         ((CardLayout)inputPanel.getLayout()).next(inputPanel);
         nextPlayerButton.setEnabled(true);
         inputLabel.setText("Input - Player" + players.get(currentPlayer).getName() + "'s Shown Cards");
@@ -339,16 +347,18 @@ public class GameDriverPanel extends JPanel
             resolutionFactory.add_and_resolve(
                     RuleParser.userFriendlyStringToFact(showComboBox3.getSelectedItem().toString()),
                     RuleParser.userFriendlyStringToFact(showComboBox1.getSelectedItem().toString()));
+
             scorecard.updateAllRows(resolutionFactory);
         }
         else
         {
-            //TODO where do we pass in the cards that were guessed?
-            //showComboBox2.getSelectedItem().toString()  // the player the card is being shown to
             //showComboBox1.getSelectedItem().toString()  // the player who has the card
-            resolutionFactory.add_temp_and_resolve(
-                    RuleParser.userFriendlyStringToFact(showComboBox2.getSelectedItem().toString()),
-                    RuleParser.userFriendlyStringToFact(showComboBox1.getSelectedItem().toString()));
+            //showComboBox2.getSelectedItem().toString()  // the player who asked for the card
+            List<String> shown = new ArrayList<>();
+            shown.add(RuleParser.userFriendlyStringToFact(showComboBox1.getSelectedItem().toString()));
+            shown.add(RuleParser.userFriendlyStringToFact(showComboBox2.getSelectedItem().toString()));
+            resolutionFactory.add_temp_and_resolve("Shown", shown);
+
             scorecard.updateAllRows(resolutionFactory);
         }
 
@@ -367,6 +377,7 @@ public class GameDriverPanel extends JPanel
         ((CardLayout)inputPanel.getLayout()).next(inputPanel);
         nextPlayerButton.setEnabled(false);
         inputLabel.setText("Input - Player" + players.get(currentPlayer).getName() + "'s Guess");
+        resolutionFactory.remove_temporary();
         refreshUi();
     }
 
