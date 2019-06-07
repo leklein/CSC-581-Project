@@ -1,6 +1,8 @@
 package driver;
 
 import resolution.ResolutionFactory;
+import resolution.Rule;
+import resolution.RuleParser;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -324,8 +326,9 @@ public class GameDriverPanel extends JPanel
     private void showButtonActionPerformed(ActionEvent e) {
         if (showComboBox2.getSelectedItem().equals("User"))
         {
-            resolutionFactory.add_and_resolve(showComboBox3.getSelectedItem().toString(),
-                    showComboBox1.getSelectedItem().toString());
+            resolutionFactory.add_and_resolve(
+                    RuleParser.userFriendlyStringToFact(showComboBox3.getSelectedItem().toString()),
+                    RuleParser.userFriendlyStringToFact(showComboBox1.getSelectedItem().toString()));
             scorecard.updateAllRows(resolutionFactory);
         }
         else

@@ -19,7 +19,6 @@ public class GameDriver
     private static int playerCount = 4;
 
     private static GameDriverPanel gameDriverPanel;
-    private static RuleParser ruleParser;
 
     private static List<String> people;
     private static List<String> weapons;
@@ -33,10 +32,8 @@ public class GameDriver
 
     public static void main(String[] args)
     {
-        ruleParser = new RuleParser();
-
-        List<Rule> facts = ruleParser.generateRules("files/facts.txt");
-        List<Rule> rules = ruleParser.generateRules("files/rules.txt");
+        List<Rule> facts = RuleParser.generateRules("files/facts.txt");
+        List<Rule> rules = RuleParser.generateRules("files/rules.txt");
 
         createInitialGameSetup(facts);
         createUi();
@@ -53,7 +50,7 @@ public class GameDriver
         for (Rule fact : facts)
         {
             String type = fact.predicates.get(0).name;
-            String value = ruleParser.factToUserFriendlyString(fact.predicates.get(0).symbols.get(0).name);
+            String value = RuleParser.factToUserFriendlyString(fact.predicates.get(0).symbols.get(0).name);
 
             if (type.equals("Person")) people.add(value);
             else if (type.equals("Weapon")) weapons.add(value);

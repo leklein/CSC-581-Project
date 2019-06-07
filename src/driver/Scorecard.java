@@ -1,6 +1,7 @@
 package driver;
 
 import resolution.ResolutionFactory;
+import resolution.RuleParser;
 
 import java.util.List;
 
@@ -21,17 +22,17 @@ public class Scorecard
     {
         for (int x = 0; x < people.getRowCount(); x++)
         {
-            String person = people.getValueAt(x, 0).toString();
+            String person = RuleParser.userFriendlyStringToFact(people.getValueAt(x, 0).toString());
             updateRow(person, resolutionFactory.getInfoForSymbol(person));
         }
         for (int x = 0; x < weapons.getRowCount(); x++)
         {
-            String weapon = weapons.getValueAt(x, 0).toString();
+            String weapon = RuleParser.userFriendlyStringToFact(weapons.getValueAt(x, 0).toString());
             updateRow(weapon, resolutionFactory.getInfoForSymbol(weapon));
         }
         for (int x = 0; x < rooms.getRowCount(); x++)
         {
-            String room = rooms.getValueAt(x, 0).toString();
+            String room = RuleParser.userFriendlyStringToFact(rooms.getValueAt(x, 0).toString());
             updateRow(room, resolutionFactory.getInfoForSymbol(room));
         }
     }

@@ -9,15 +9,29 @@ import java.util.LinkedList;
 
 public class RuleParser {
 
-    public String factToUserFriendlyString(String fact)
+    public static String factToUserFriendlyString(String fact)
     {
         String[] splitFact = fact.split("_");
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < splitFact.length; i++)
         {
-            splitFact[i] = splitFact[i].trim() + " ";
+            if (i != 0) stringBuilder.append(" ");
+            stringBuilder.append(splitFact[i].trim());
         }
 
-        return Arrays.toString(splitFact);
+        return stringBuilder.toString();
+    }
+
+    public static String userFriendlyStringToFact(String userFriendlyString)
+    {
+        String[] splitUserFriendlyString = userFriendlyString.split(" ");
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < splitUserFriendlyString.length; i++)
+        {
+            stringBuilder.append("_" + splitUserFriendlyString[i].trim());
+        }
+
+        return stringBuilder.toString();
     }
 
     public static void parse(List<Rule> rules) {
@@ -42,7 +56,7 @@ public class RuleParser {
         }
     }
 
-    public List<Rule> generateRules(String fileName) {
+    public static List<Rule> generateRules(String fileName) {
 
         List<Rule> rules = new LinkedList<Rule>();
 
