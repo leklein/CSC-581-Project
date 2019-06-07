@@ -7,25 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1311ee06-0c7f-45eb-9ec2-88da956d52e7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/clue_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/GameDriver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/Scorecard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/driver/ScorecardTableModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/AnswerPredicate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/Instance.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/Predicate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/ResolutionFactory$Info.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/ResolutionFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/Rule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/RuleParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/Symbol.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clue Solver/resolution/Variable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/driver/GameDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/GameDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/driver/GameDriverPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver/GameDriverPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resolution/ResolutionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolution/ResolutionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolution/RuleParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolution/RuleParser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -77,7 +59,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResolutionFactory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ResolutionFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resolution/ResolutionFactory.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="101">
@@ -122,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RuleParser.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RuleParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resolution/RuleParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+            <state relative-caret-position="204">
+              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -162,9 +144,10 @@
       <find>800</find>
       <find>ruleParser</find>
       <find>knowledgebase.add</find>
-      <find>showbutton</find>
       <find>add_and_r</find>
+      <find>showbutton</find>
       <find>factto</find>
+      <find>system.o</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -216,11 +199,11 @@
         <option value="$PROJECT_DIR$/src/driver/GuessDriverShownInputPanel.jfd" />
         <option value="$PROJECT_DIR$/src/driver/GuessDriverShownInputPanel.java" />
         <option value="$PROJECT_DIR$/src/driver/GameDriverPanel.jfd" />
-        <option value="$PROJECT_DIR$/src/resolution/RuleParser.java" />
         <option value="$PROJECT_DIR$/src/driver/Scorecard.java" />
         <option value="$PROJECT_DIR$/src/driver/GameDriver.java" />
         <option value="$PROJECT_DIR$/src/driver/GameDriverPanel.java" />
         <option value="$PROJECT_DIR$/src/resolution/ResolutionFactory.java" />
+        <option value="$PROJECT_DIR$/src/resolution/RuleParser.java" />
       </list>
     </option>
   </component>
@@ -246,23 +229,13 @@
             <path>
               <item name="Clue Solver" type="b2602c69:ProjectViewProjectNode" />
               <item name="Clue Solver" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Clue Solver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Clue Solver" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Clue Solver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Clue Solver" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Clue Solver" type="b2602c69:ProjectViewProjectNode" />
               <item name="Clue Solver" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resolution" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -373,9 +346,9 @@
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
-      <window_info active="true" anchor="bottom" id="Event Log" sideWeight="0.50065106" side_tool="true" visible="true" weight="0.40492475" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.50065106" side_tool="true" weight="0.36662108" />
       <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49934897" visible="true" weight="0.40492475" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49934897" weight="0.40492475" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
@@ -387,7 +360,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
       <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.36662108" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49934897" visible="true" weight="0.36662108" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -430,15 +403,21 @@
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/resolution/RuleParser.java</url>
+          <line>33</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/resolution/RuleParser.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="players" language="JAVA" />
-        <watch expression="people" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -714,13 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resolution/RuleParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/driver/Scorecard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -748,6 +720,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.jfd">
+      <provider selected="true" editor-type-id="JFormDesigner" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
@@ -760,9 +735,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/driver/GameDriverPanel.jfd">
-      <provider selected="true" editor-type-id="JFormDesigner" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/driver/GameDriver.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -787,6 +759,13 @@
             <element signature="e#9748#9757#0" expanded="true" />
             <element signature="e#10118#10124#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resolution/RuleParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
         </state>
       </provider>
     </entry>
