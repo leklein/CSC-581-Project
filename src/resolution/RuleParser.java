@@ -41,7 +41,12 @@ public class RuleParser {
         for (Rule rule : rules) {
             for (int i = 0; i < rule.predicates.size(); i++) {
                 Predicate pred = rule.predicates.get(i);
-                System.out.print(pred.name + ":");
+                if (!pred.negated) {
+                   System.out.print(pred.name + ":");
+                }
+                else {
+                  System.out.print("!" + pred.name + ":");
+                }
                 for (int j = 0; j < pred.symbols.size(); j++) {
                     System.out.print(pred.symbols.get(j).name);
                     if (j != pred.symbols.size() - 1) {
@@ -71,6 +76,7 @@ public class RuleParser {
                 if (!line.equals("")) {
                     List<Predicate> preds = new LinkedList<Predicate>();
 
+                    boolean negated = false;
                     String predName = "";
                     String[] predVars = {};
 
@@ -81,6 +87,10 @@ public class RuleParser {
 
                     for (int i = 0; i < line.length(); i++) {
                         if (line.charAt(i) == ':') {
+                            if (line.charAt(predStart) == '!') {
+                               predStart += 1;
+                               negated = true;
+                            }
                             predName = line.substring(predStart, i);
                             argsStart = i + 1;
                         }
@@ -102,8 +112,9 @@ public class RuleParser {
                         }
 
                         if (foundFullPred) {
-                            preds.add(new Predicate(predName, predVarsList));
+                            preds.add(new Predicate(predName, predVarsList, negated));
                             foundFullPred = false;
+                            negated = false;
                         }
                     }
 
